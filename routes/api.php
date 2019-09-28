@@ -19,4 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::get('/login', 'Auth\loginController@login')->name('login');
+Route::post('/login', 'Auth\authController@login')->name('login');
+Route::post('/logout', 'Auth\authController@logout')->name('logout');
+Route::post('/register', 'Auth\authController@register')->name('register');
+Route::post('/verifyaccount', 'Auth\authController@verifyAccount')->name('verifyaccount');
+Route::post('/verifyRestingPassword', 'Auth\authController@verifyRestingPassword')->name('verifyRestingPassword');
+Route::post('/sendVerificationCodeRegistering', 'Auth\authController@sendVerificationCodeRegistering')->name('sendVerificationCodeRegistering');
+Route::post('/sendVerificationCodeResetingPasssword', 'Auth\authController@sendVerificationCodeResetingPasssword')->name('sendVerificationCodeResetingPasssword');
+Route::post('/resetPassword', 'Auth\authController@resetPassword')->name('resetPassword');
+Route::post('/changePassword', 'Auth\authController@changePassword')->name('changePassword');
