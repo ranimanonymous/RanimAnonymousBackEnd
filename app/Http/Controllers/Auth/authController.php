@@ -18,27 +18,26 @@ class authController extends Controller
     public function login(Request $request){
 
         $user = new User();
-        $user = User::getUserByUserName($request['username']);
+        $user = User::where('username', $request['username'])->first();
 
-        if(User::checkActiveUser($user)) {
-            if ($user != null) {
+        if ($user != null) {
+
+            if(User::checkActiveUser($user)) {
+
                 if (User::compairPasswordd($user, $request['password'])) {
 
                     $session = self::generateSession($user);
 
-                    echo response(User::packResponse($user, $session->payload, 200, null))
-                        ->header('Content-Type', 'application/json');
+                    return json_encode(User::packResponse($user, $session->payload, 200, null));
+
                 } else {
-                    echo response(User::packResponse(null, null, 400, 'wrong Password!'))
-                        ->header('Content-Type', 'application/json');
+                    return json_encode(User::packResponse(null, null, 400, 'wrong Password!'));
                 }
             } else {
-                echo response(User::packResponse(null, null, 400, 'userName is not exist!'))
-                    ->header('Content-Type', 'application/json');
+                return json_encode(User::packResponse(null, null, 400, 'you need to verify your account before logging in!'));
             }
         }else{
-            echo response(User::packResponse(null, null, 400, 'you need to verify your account before logging in!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
         }
     }
 
@@ -50,20 +49,12 @@ class authController extends Controller
 
             $user = self::addUser($request);
 
-            //$session = self::generateSession($user);
-
             self::addVerificationCode($user, 1);
 
-//            echo response(User::packResponse($user, $session->payload, 200, null))
-            echo response(User::packResponse($user, null, 200, null))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse($user, null, 200, null));
         }else{
-            echo response(User::packResponse(null, null, 400, $validity[1]))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, $validity[1]));
         }
-
-
-
     }
 
     public function logout(Request $request){
@@ -74,11 +65,9 @@ class authController extends Controller
 
             Session::updateLastActivity(null, $user->id);
 
-            echo response(User::packResponse(null, null, 200, 'success!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 200, 'success!'));
         }else{
-            echo response(User::packResponse(null, null, 400, 'userName is not exist!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
         }
 
     }
@@ -124,12 +113,9 @@ class authController extends Controller
 
             self::addVerificationCode($user, 2);
 
-            echo response(User::packResponse(null, null, 200, 'success!'))
-                ->header('Content-Type', 'application/json');
-
+            return json_encode(User::packResponse(null, null, 200, 'success!'));
         }else{
-            echo response(User::packResponse(null, null, 400, 'userName is not exist!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
         }
 
     }
@@ -145,20 +131,16 @@ class authController extends Controller
 
                     User::changePassword($user, $request['newpassword']);
 
-                    echo response(User::packResponse(null, null, 200, 'success!'))
-                        ->header('Content-Type', 'application/json');
 
+                    return json_encode(User::packResponse(null, null, 200, 'success!'));
                 } else {
-                    echo response(User::packResponse(null, null, 400, 'wrong Password!'))
-                        ->header('Content-Type', 'application/json');
+                    return json_encode(User::packResponse(null, null, 400, 'wrong Password!'));
                 }
             } else {
-                echo response(User::packResponse(null, null, 400, 'userName is not exist!'))
-                    ->header('Content-Type', 'application/json');
+                return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
             }
         }else{
-            echo response(User::packResponse(null, null, 400, 'you need to verify your account before logging in!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, 'you need to verify your account before logging in!'));
         }
     }
 
@@ -168,7 +150,8 @@ class authController extends Controller
     //------------------------------------------------
 
     public function verify($request){
-//        dd($request->all());
+
+        //        dd($request->all());
         $user = new User();
         $user = User::getUserByUserName($request['username']);
 
@@ -179,16 +162,13 @@ class authController extends Controller
 
                 verificationcode::verifyAccount($request['verificationcode'], $user, $request['verificationType'], $request['newpassword']);
 
-                echo response(User::packResponse(null, null, 200, 'success!'))
-                    ->header('Content-Type', 'application/json');
+                return json_encode(User::packResponse(null, null, 200, 'success!'));
             }else{
-                echo response(User::packResponse(null, null, 400, $validityOfVerificationCode[1]))
-                    ->header('Content-Type', 'application/json');
+                return json_encode(User::packResponse(null, null, 400, $validityOfVerificationCode[1]));
             }
 
         }else{
-            echo response(User::packResponse(null, null, 400, 'userName is not exist!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
         }
     }
 
@@ -199,14 +179,10 @@ class authController extends Controller
 
             self::addVerificationCode($user, $request['verificationType']);
 
-            echo response(User::packResponse(null, null, 200, 'success!'))
-                ->header('Content-Type', 'application/json');
-
+            return json_encode(User::packResponse(null, null, 200, 'success!'));
         }else{
-            echo response(User::packResponse(null, null, 400, 'userName is not exist!'))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
         }
-
     }
 
     public function generateSession($user){
@@ -220,8 +196,7 @@ class authController extends Controller
             return $session;
 
         } catch (Exception $e) {
-            echo response(User::packResponse(null, null, 400, $e->getMessage()))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
     }
 
@@ -236,8 +211,7 @@ class authController extends Controller
             return $user;
 
         } catch (Exception $e) {
-            echo response(User::packResponse(null, null, 400, $e->getMessage()))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
     }
 
@@ -255,8 +229,7 @@ class authController extends Controller
             $verificationcode->save();
 
         } catch (Exception $e) {
-            echo response(User::packResponse(null, null, 400, $e->getMessage()))
-                ->header('Content-Type', 'application/json');
+            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
     }
 }

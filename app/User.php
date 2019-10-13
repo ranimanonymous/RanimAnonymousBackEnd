@@ -7,10 +7,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DB;
 use Carbon\Carbon;
+use Laratrust\Traits\LaratrustUserTrait;
 
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
 
     public static $tableName = 'users';
     public static $tbid = 'id';
@@ -55,8 +57,15 @@ class User extends Authenticatable
     public static function  packResponse($data, $sessionKey, $code, $errorMsg){
 
         if($data != null) {
-            $data = self::getallAttribute($data);
-
+            if(is_array($data)){
+                $arr = [];
+                foreach ($data as $item){
+                    array_push($arr, self::getallAttribute($item));
+                }
+                $data = $arr;
+            }else{
+                $data = self::getallAttribute($data);
+            }
             $Result = [];
 
             $Result['data'] = $data;
@@ -70,9 +79,9 @@ class User extends Authenticatable
         $Result['code'] = $code;
 
         if($errorMsg == null){
-            $Result['errorMsg'] = '';
+            $Result['Msg'] = '';
         }else{
-            $Result['errorMsg'] = $errorMsg;
+            $Result['Msg'] = $errorMsg;
         }
 
         return $Result;
