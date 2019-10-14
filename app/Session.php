@@ -17,15 +17,15 @@ class Session extends Model
     public static $tblast_activity = 'last_activity';
 
     // $type : 0 -> object, 1 -> array
-    public function setallAttribute($request, $type){
+    public function setallAttribute($request){
 
-        if ($type == 0) {
+        if(!is_array($request)){
             $this->user_id = $request->user_id;
             $this->ip_address = $request->ip_address;
             $this->user_agent = $request->user_agent;
             $this->payload = $request->payload;
             $this->last_activity = $request->last_activity;
-        }else if ($type == 1){
+        }else {
             $this->user_id = $request['user_id'];
             $this->ip_address = $request['ip_address'];
             $this->user_agent = $request['user_agent'];

@@ -325,7 +325,7 @@ class rolesController extends Controller
         try{
 
             $permission = new Permission();
-            $permission->setallAttribute($object, $objType);
+            $permission->setallAttribute($object);
             $permission = $permission->save();
 
             return $permission;
@@ -342,7 +342,7 @@ class rolesController extends Controller
         try{
 
             $role = new Role();
-            $role->setallAttribute($object, $objType);
+            $role->setallAttribute($object);
             $role = $role->save();
 
             return $role;

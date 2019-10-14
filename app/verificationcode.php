@@ -18,14 +18,13 @@ class verificationcode extends Model
 
     // $type : 0 -> object, 1 -> array
     // verifingtype : 1 -> verify registered user,   2 -> verifiy reseting password
-    public function setallAttribute($request, $type){
-
-        if ($type == 1) {
+    public function setallAttribute($request){
+        if(!is_array($request)){
             $this->user_id = $request->user_id;
             $this->verificationcode = $request->verificationcode;
             $this->verifingtype = $request->verifingtype;
             $this->used = 0;
-        }else if ($type == 2){
+        }else {
             $this->user_id = $request['user_id'];
             $this->verificationcode = $request['verificationcode'];
             $this->verifingtype = $request['verifingtype'];

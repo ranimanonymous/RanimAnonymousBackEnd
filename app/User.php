@@ -17,22 +17,40 @@ class User extends Authenticatable
     public static $tableName = 'users';
     public static $tbid = 'id';
     public static $tbusername = 'username';
+    public static $tbfirstName = 'firstName';
+    public static $tblastName = 'lastName';
+    public static $tbemail = 'email';
+    public static $tbbornDate = 'bornDate';
+    public static $tbphone = 'phone';
+    public static $tbimage = 'image';
     public static $tbpassword = 'password';
     public static $tbverified = 'verified';
     public static $tbcreated_at = 'created_at';
     public static $tbupdated_at = 'updated_at';
 
 
-    public function setallAttribute($request, $type){
+    public function setallAttribute($request){
 
-        if ($type == 0) {
+        if(!is_array($request)){
             $this->username = $request->username;
+            $this->firstName = $request->firstName;
+            $this->lastName = $request->lastName;
+            $this->email = $request->email;
+            $this->bornDate = $request->bornDate;
+            $this->phone = $request->phone;
+            $this->image = $request->image;
             $this->password = $request->password;
             $this->verified = 0;
             $this->created_at = Carbon::now();
             $this->updated_at = Carbon::now();
-        }else if ($type == 1){
+        }else {
             $this->username = $request['username'];
+            $this->firstName = $request['firstName'];
+            $this->lastName = $request['lastName'];
+            $this->email = $request['email'];
+            $this->bornDate = $request['bornDate'];
+            $this->phone = $request['phone'];
+            $this->image = $request['image'];
             $this->password = $request['password'];
             $this->verified = 0;
             $this->created_at = Carbon::now();
@@ -46,6 +64,12 @@ class User extends Authenticatable
 
         $result[self::$tbid] = $data->id;
         $result[self::$tbusername] = $data->username;
+        $result[self::$tbfirstName] = $data->firstName;
+        $result[self::$tblastName] = $data->lastName;
+        $result[self::$tbemail] = $data->email;
+        $result[self::$tbbornDate] = $data->bornDate;
+        $result[self::$tbphone] = $data->phone;
+        $result[self::$tbimage] = $data->image;
 //        $result[self::$tbpassword] = $data->password;
         $result[self::$tbverified] = $data->verified;
 //        $result[self::$tbcreated_at] = $data->created_at;
@@ -87,6 +111,21 @@ class User extends Authenticatable
         return $Result;
     }
 
+    public static function edit($newObject){
+        DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $newObject->id)
+            ->update([
+                'username' => $newObject->username,
+                'firstName' => $newObject->firstName,
+                'lastName' => $newObject->lastName,
+                'email' => $newObject->email,
+                'bornDate' => $newObject->bornDate,
+                'phone' => $newObject->phone,
+                'image' => $newObject->image,
+                'updated_at' => Carbon::now(),
+            ]);
+    }
+
     public static function getUserByUserName($userName){
 
         $Data = DB::table(self::$tableName)
@@ -113,8 +152,18 @@ class User extends Authenticatable
 
     public static function CheckAdding($object){
         // check username
-        if(self::getUserByUserName($object->username) == null){
-            return [true, 'success'];
+        if(!self::getUserByUserName($object->username)){
+            // check email
+            if(!User::where('email', $object->email)->first()){
+                // check phone
+                if(!User::where('phone', $object->phone)->first()){
+                    return [true, 'success'];
+                }else{
+                    return [false, 'phone exist'];
+                }
+            }else{
+                return [false, 'email exist'];
+            }
         }else {
             return [false, 'username exist'];
         }

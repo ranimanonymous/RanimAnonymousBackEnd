@@ -25,6 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', 'Auth\authController@login')->name('login');
 Route::post('/logout', 'Auth\authController@logout')->name('logout')->middleware('checkRole');
 Route::post('/register', 'Auth\authController@register')->name('register');
+Route::post('/editUser', 'Auth\authController@editUser')->name('editUser');
 Route::post('/verifyaccount', 'Auth\authController@verifyAccount')->name('verifyaccount');
 Route::post('/verifyRestingPassword', 'Auth\authController@verifyRestingPassword')->name('verifyRestingPassword');
 Route::post('/sendVerificationCodeRegistering', 'Auth\authController@sendVerificationCodeRegistering')->name('sendVerificationCodeRegistering');

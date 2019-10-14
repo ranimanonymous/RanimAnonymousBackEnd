@@ -18,7 +18,13 @@ class authController extends Controller
     public function login(Request $request){
 
         $user = new User();
-        $user = User::where('username', $request['username'])->first();
+        if(is_numeric($request['username'])){
+            $user = User::where('phone', $request['username'])->first();
+        }else if (strpos($request['username'], '@') !== false && strpos($request['username'], '.com') !== false){
+            $user = User::where('email', $request['username'])->first();
+        }else{
+            $user = User::where('username', $request['username'])->first();
+        }
 
         if ($user != null) {
 
@@ -54,6 +60,20 @@ class authController extends Controller
             return json_encode(User::packResponse($user, null, 200, null));
         }else{
             return json_encode(User::packResponse(null, null, 400, $validity[1]));
+        }
+    }
+
+    public function editUser(Request $request){
+
+        $user = User::where('id', $request['id'])->first();
+
+        if ($user != null) {
+
+            User::edit($request);
+
+            return json_encode(User::packResponse(null, null, 200, 'success!'));
+        }else{
+            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
         }
     }
 
@@ -189,7 +209,7 @@ class authController extends Controller
         try{
             $session_arr = Session::generateSession($user);
             $session = new Session();
-            $session->setallAttribute($session_arr, 1);
+            $session->setallAttribute($session_arr);
             $session->save();
             Session::updateLastActivity($session->id, $user->id);
 
@@ -205,7 +225,7 @@ class authController extends Controller
         try{
 
             $user = new User();
-            $user->setallAttribute($object, 0);
+            $user->setallAttribute($object);
             $user->save();
 
             return $user;
@@ -225,9 +245,8 @@ class authController extends Controller
             $data['verificationcode'] = mt_rand(100000, 999999);
             $data['verifingtype'] = $verificationType;
             $verificationcode = new verificationcode();
-            $verificationcode->setallAttribute($data, $verificationType);
+            $verificationcode->setallAttribute($data);
             $verificationcode->save();
-
         } catch (Exception $e) {
             return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
