@@ -386,6 +386,84 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "42",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Abode9",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "firstname1",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "lastname1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email9@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "bornDate",
+									"value": "1997-09-15",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0930451142",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "image1.jpg",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/editUser",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"editUser"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

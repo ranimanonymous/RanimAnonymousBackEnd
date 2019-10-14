@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2019 at 12:54 AM
+-- Generation Time: Oct 15, 2019 at 12:22 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -271,6 +271,12 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
+  `firstName` varchar(50) DEFAULT NULL,
+  `lastName` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `bornDate` date DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `image` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
   `verified` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -281,8 +287,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `verified`, `created_at`, `updated_at`) VALUES
-(34, 'Abode', '123456', 1, '2019-09-28 13:47:45', '2019-09-28 10:47:45');
+INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `email`, `bornDate`, `phone`, `image`, `password`, `verified`, `created_at`, `updated_at`) VALUES
+(34, 'Abode', 'Abdelrahman', 'Alhorani', 'abd.r.horani@gmail.com', '1997-09-15', 930451133, '', '123456', 1, '2019-10-14 20:48:29', '2019-09-28 10:47:45');
 
 -- --------------------------------------------------------
 
@@ -308,7 +314,9 @@ INSERT INTO `verificationcodes` (`user_id`, `verificationcode`, `used`, `verifin
 (34, '255125', 1, 1, '2019-09-28 13:13:11', '2019-09-28 10:13:11'),
 (34, '856510', 0, 2, '2019-09-28 10:30:55', '2019-09-28 10:30:55'),
 (34, '332706', 0, 2, '2019-09-28 10:31:19', '2019-09-28 10:31:19'),
-(34, '341081', 1, 2, '2019-09-28 13:45:46', '2019-09-28 10:45:46');
+(34, '341081', 1, 2, '2019-09-28 13:45:46', '2019-09-28 10:45:46'),
+(41, '783293', 0, 1, '2019-10-14 18:27:44', '2019-10-14 18:27:44'),
+(42, '926496', 0, 1, '2019-10-14 18:33:40', '2019-10-14 18:33:40');
 
 --
 -- Indexes for dumped tables
@@ -400,7 +408,7 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
