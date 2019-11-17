@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b23c6e48-bbc9-475d-afe1-b48a9f47b783" name="Default Changelist" comment="Authentications and roles has been implemented : &#10;Authentication : &#10;1 - register&#10;2 - login&#10;3 - verifyaccount&#10;4 - verifyResetingPassword&#10;5 - changePassword&#10;6 - sendVerificationCodeResetingPassword&#10;7 - resetPassword&#10;8 - logout&#10;Roles : &#10;     1 - permission : &#10;         1 - addMainPermission&#10;         2 - addSubPermission&#10;         3 - editPermission&#10;         4 - deletePermission&#10;         5 - getAllPermission&#10;     2 - Role : &#10;         1 - addRole&#10;         2 - getAllRole&#10;         3 - editRole&#10;         4 - deleteRole&#10;     3 - Permission&amp;Role :&#10;         1 - attachPermissionToRole&#10;         2 - deAttachPermissionToRole&#10;     4 - User&amp;Role : &#10;         1 - attachUserToRole&#10;         2 - deAttachUserToRole&#10;     5 - User&amp;Permission&#10;         1 - attachPermissionToUser&#10;         2 - deAttachPermissionToUser&#10;     6 - checkingUserPermission&amp;Role : &#10;         1 - hasRole&#10;         2 - hasPermission">
+    <list default="true" id="b23c6e48-bbc9-475d-afe1-b48a9f47b783" name="Default Changelist" comment="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ngx-bootstrap/datepicker/bundles/ngx-bootstrap-datepicker.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ngx-bootstrap/datepicker/bundles/ngx-bootstrap-datepicker.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ngx-bootstrap/datepicker/fesm2015/ngx-bootstrap-datepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ngx-bootstrap/datepicker/fesm2015/ngx-bootstrap-datepicker.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ngx-bootstrap/datepicker/fesm5/ngx-bootstrap-datepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ngx-bootstrap/datepicker/fesm5/ngx-bootstrap-datepicker.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Roles/rolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Roles/rolesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/verificationcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/verificationcode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,43 +24,46 @@
     <session id="-2098640394">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.12" value="2" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.12" value="3" />
+          <entry key="project.open.time.159" value="1" />
+          <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="env" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="32" />
+          <entry key="php" value="195" />
+          <entry key="realestateController" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="32" />
+          <entry key="PHP" value="196" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="16" />
+          <entry key="dummy" value="17" />
           <entry key="env" value="4" />
-          <entry key="php" value="8039" />
-          <entry key="txt" value="905" />
+          <entry key="php" value="17412" />
+          <entry key="txt" value="1098" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="4" />
-          <entry key="PHP" value="8039" />
-          <entry key="PLAIN_TEXT" value="921" />
+          <entry key="PHP" value="17412" />
+          <entry key="PLAIN_TEXT" value="1115" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -67,122 +71,44 @@
           <entry key="PHP Class.type" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Notification/notificationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="88" column="23" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
+              <folding>
+                <element signature="e#53#89#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="211">
+              <caret line="546" column="29" selection-start-line="546" selection-start-column="29" selection-end-line="546" selection-end-column="29" />
               <folding>
                 <element signature="e#45#81#0#PHP" expanded="true" />
-                <element signature="e#284#1167#0#PHP" />
-                <element signature="e#1173#1584#0#PHP" />
-                <element signature="e#1922#2307#0#PHP" />
-                <element signature="e#1590#2036#0#PHP" />
-                <element signature="e#2043#2302#0#PHP" />
-                <element signature="e#2308#2535#0#PHP" />
-                <element signature="e#2541#2792#0#PHP" />
-                <element signature="e#2798#3055#0#PHP" />
-                <element signature="e#3061#3459#0#PHP" />
-                <element signature="e#3465#4324#0#PHP" />
-                <element signature="e#4517#5403#0#PHP" />
-                <element signature="e#5409#5832#0#PHP" />
-                <element signature="e#5838#6307#0#PHP" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/verificationcode.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
-              <folding>
-                <element signature="e#23#62#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Permission.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="110" column="27" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
-              <folding>
-                <element signature="e#23#64#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/composer.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Roles/rolesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-              <folding>
-                <element signature="e#46#82#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckRole.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-              <folding>
-                <element signature="e#39#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Role.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-              <folding>
-                <element signature="e#23#58#0#PHP" expanded="true" />
-                <marker date="1571088777303" expanded="true" signature="2618:2828" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Boolean.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="e#24#63#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="113" column="27" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
+            <state relative-caret-position="40">
+              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
               <folding>
                 <element signature="e#23#63#0#PHP" expanded="true" />
               </folding>
@@ -191,10 +117,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/notification.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="536">
+              <caret line="147" column="21" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
+              <folding>
+                <element signature="e#24#63#0#PHP" expanded="true" />
+                <element signature="e#528#1179#0#PHP" />
+                <element signature="e#1185#1619#0#PHP" />
+                <element signature="e#1925#2071#0#PHP" />
+                <element signature="e#4045#4302#0#PHP" />
+                <element signature="e#4308#4576#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="27" column="72" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
+            <state relative-caret-position="401">
+              <caret line="176" column="33" selection-start-line="176" selection-start-column="14" selection-end-line="176" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -203,36 +146,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>return</find>
-      <find>paylo</find>
-      <find>login</find>
-      <find>dd(</find>
-      <find>provide</find>
-      <find>resetpas</find>
-      <find>add</find>
-      <find>addUser</find>
-      <find>addSubPermission</find>
-      <find>authController</find>
-      <find>auth</find>
-      <find>Auth</find>
-      <find>DB::table</find>
-      <find>errorMsg</find>
-      <find>parent_id</find>
-      <find>User</find>
-      <find>getKey</find>
-      <find>Permission</find>
-      <find>dd</find>
-      <find>$sessionKey</find>
-      <find>get</find>
-      <find>update</find>
-      <find>routeMiddleware</find>
-      <find>checkActiveUser</find>
-      <find>logout</find>
-      <find>is_arr</find>
-      <find>setallAttribute</find>
-      <find>edi</find>
-      <find>logou</find>
+      <find>totalduration</find>
+      <find>SAVE</find>
+      <find>getUserIdBySession</find>
+      <find>address</find>
+      <find>$request</find>
+      <find>getuserbysess</find>
+      <find>-&gt;save</find>
+      <find>getallAttribute</find>
+      <find>role</find>
+      <find>packResponse</find>
       <find>edit</find>
+      <find>BuildLogObject</find>
+      <find>setallAttribute</find>
+      <find>$request['user_id']</find>
+      <find>getAllPermission</find>
+      <find>verifyacc</find>
+      <find>dd(</find>
+      <find>verif</find>
+      <find>$user = User::getUserBySession</find>
+      <find>$user = User::getUserBySession(</find>
+      <find>update</find>
+      <find>realestate</find>
+      <find>tbtype</find>
+      <find>getRealEstatesLists</find>
+      <find>$tableName</find>
+      <find>tableName</find>
+      <find>order</find>
+      <find>DB::table</find>
+      <find>where</find>
+      <find>db::</find>
     </findStrings>
     <replaceStrings>
       <replace>Msg</replace>
@@ -249,17 +192,38 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/verify.php" />
-        <option value="$PROJECT_DIR$/app/Session.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Role.php" />
-        <option value="$PROJECT_DIR$/app/Boolean.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Roles/rolesController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" />
-        <option value="$PROJECT_DIR$/app/verificationcode.php" />
         <option value="$PROJECT_DIR$/app/Permission.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Session.php" />
+        <option value="$PROJECT_DIR$/app/costmeasures.php" />
+        <option value="$PROJECT_DIR$/app/sizemeasures.php" />
+        <option value="$PROJECT_DIR$/app/costmeasure.php" />
+        <option value="$PROJECT_DIR$/app/sizemeasure.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" />
+        <option value="$PROJECT_DIR$/app/image.php" />
+        <option value="$PROJECT_DIR$/app/measure_size.php" />
+        <option value="$PROJECT_DIR$/app/measure_coste.php" />
+        <option value="$PROJECT_DIR$/app/phones.php" />
+        <option value="$PROJECT_DIR$/app/Boolean.php" />
+        <option value="$PROJECT_DIR$/app/log.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Roles/rolesController.php" />
+        <option value="$PROJECT_DIR$/app/verificationcode.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/measures/measuresController.php" />
+        <option value="$PROJECT_DIR$/app/action.php" />
+        <option value="$PROJECT_DIR$/app/helper.php" />
+        <option value="$PROJECT_DIR$/app/like.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Social/socialmediaController.php" />
+        <option value="$PROJECT_DIR$/app/site.php" />
+        <option value="$PROJECT_DIR$/app/realestate_site.php" />
+        <option value="$PROJECT_DIR$/app/notificationlistener.php" />
+        <option value="$PROJECT_DIR$/app/realestate.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/RealEstate/realestateController.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/notification.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Notification/notificationController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php" />
       </list>
     </option>
@@ -391,10 +355,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-338" />
-    <option name="y" value="107" />
-    <option name="width" value="1037" />
-    <option name="height" value="734" />
+    <option name="x" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -442,7 +405,39 @@
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="measures" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Notification" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="RealEstate" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Roles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Social" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -469,10 +464,15 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\DownTown\BackEnd\app\Http\Controllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\DownTown\BackEnd\app\Http\Controllers\measures" />
+      <recent name="D:\Projects\DownTown\BackEnd\app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -504,7 +504,12 @@
       <workItem from="1569604174623" duration="21605000" />
       <workItem from="1569909759126" duration="12000" />
       <workItem from="1570466342929" duration="29318000" />
-      <workItem from="1570851983593" duration="10063000" />
+      <workItem from="1570851983593" duration="11099000" />
+      <workItem from="1571617797142" duration="3669000" />
+      <workItem from="1571935504330" duration="9001000" />
+      <workItem from="1572978047600" duration="5028000" />
+      <workItem from="1573426305952" duration="39209000" />
+      <workItem from="1573754940686" duration="42410000" />
     </task>
     <task id="LOCAL-00001" summary="authentication api is ready and working correctly">
       <created>1569678524603</created>
@@ -527,20 +532,230 @@
       <option name="project" value="LOCAL" />
       <updated>1571007463685</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1 - editing on login and register&#10;2 - editUser">
+      <created>1571091598679</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571091598679</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1 - new json collection&#10;2 - new database">
+      <created>1571091793315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571091793315</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574029779834</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574029779834</updated>
+    </task>
+    <task id="LOCAL-00007" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574029928913</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574029928913</updated>
+    </task>
+    <task id="LOCAL-00008" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030271930</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030271930</updated>
+    </task>
+    <task id="LOCAL-00009" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030303175</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030303175</updated>
+    </task>
+    <task id="LOCAL-00010" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030321773</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030321773</updated>
+    </task>
+    <task id="LOCAL-00011" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030361382</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030361382</updated>
+    </task>
+    <task id="LOCAL-00012" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030396373</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030396373</updated>
+    </task>
+    <task id="LOCAL-00013" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030418667</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030418667</updated>
+    </task>
+    <task id="LOCAL-00014" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030494868</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030494868</updated>
+    </task>
+    <task id="LOCAL-00015" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030528895</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030528895</updated>
+    </task>
+    <task id="LOCAL-00016" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030570337</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030570337</updated>
+    </task>
+    <task id="LOCAL-00017" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030597575</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030597575</updated>
+    </task>
+    <task id="LOCAL-00018" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030628866</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030628866</updated>
+    </task>
+    <task id="LOCAL-00019" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030650688</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030650688</updated>
+    </task>
+    <task id="LOCAL-00020" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030727417</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030727417</updated>
+    </task>
+    <task id="LOCAL-00021" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574030978767</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1574030978767</updated>
+    </task>
+    <task id="LOCAL-00022" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031061425</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031061425</updated>
+    </task>
+    <task id="LOCAL-00023" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031153484</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031153485</updated>
+    </task>
+    <task id="LOCAL-00024" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031469544</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031469544</updated>
+    </task>
+    <task id="LOCAL-00025" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031496782</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031496782</updated>
+    </task>
+    <task id="LOCAL-00026" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031523352</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031523352</updated>
+    </task>
+    <task id="LOCAL-00027" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031559070</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031559070</updated>
+    </task>
+    <task id="LOCAL-00028" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031596679</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031596679</updated>
+    </task>
+    <task id="LOCAL-00029" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031619789</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031619789</updated>
+    </task>
+    <task id="LOCAL-00030" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031647577</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031647577</updated>
+    </task>
+    <task id="LOCAL-00031" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031682939</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031682939</updated>
+    </task>
+    <task id="LOCAL-00032" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031700911</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031700911</updated>
+    </task>
+    <task id="LOCAL-00033" summary="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes">
+      <created>1574031723721</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1574031723721</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83529000" />
+    <option name="totallyTimeSpent" value="183882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2536913" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19261745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -569,7 +784,10 @@
     <MESSAGE value="authentication api is ready and working correctly" />
     <MESSAGE value="Authentications and roles has been implemented : &#10;Authentication : &#10;1 - register&#10;2 - login&#10;3 - verifyaccount&#10;4 - verifyResetingPassword&#10;5 - changePassword&#10;6 - sendVerificationCodeResetingPassword&#10;7 - resetPassword&#10;8 - logout&#10;Roles : &#10;     1 - permission : &#10;         1 - addMainPermission&#10;         2 - addSubPermission&#10;         3 - editPermission&#10;         4 - deletePermission&#10;         5 - getAllPermission&#10;     2 - Role : &#10;         1 - addRole&#10;         2 - getAllRole&#10;         3 - editRole&#10;         4 - deleteRole&#10;     3 - Permission&amp;Role :&#10;         1 - attachPermissionToRole&#10;         2 - deAttachPermissionToRole&#10;     4 - User&amp;Role : &#10;         1 - attachUserToRole&#10;         2 - deAttachUserToRole&#10;     5 - User&amp;Permission&#10;         1 - attachPermissionToUser&#10;         2 - deAttachPermissionToUser&#10;     6 - checkingUserPermission&amp;Role : &#10;         1 - hasRole&#10;         2 - hasPermission" />
     <MESSAGE value="exporting json collection and database" />
-    <option name="LAST_COMMIT_MESSAGE" value="exporting json collection and database" />
+    <MESSAGE value="1 - editing on login and register&#10;2 - editUser" />
+    <MESSAGE value="1 - new json collection&#10;2 - new database" />
+    <MESSAGE value="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes" />
+    <option name="LAST_COMMIT_MESSAGE" value="1 - role &amp; permission&#10;2 - measures&#10;3 - notification&#10;4 - likes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/cors.php">
@@ -618,16 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#40#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1800">
-          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -638,44 +846,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="64" column="18" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="18" />
-          <folding>
-            <element signature="e#28#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Boolean.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#24#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-          <folding>
-            <element signature="e#23#58#0#PHP" expanded="true" />
-            <marker date="1571088777303" expanded="true" signature="2618:2828" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -688,80 +862,333 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckRole.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+        <state relative-caret-position="221">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
           <folding>
             <element signature="e#39#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/verificationcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/routes/channels.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Roles/rolesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="-19412">
+          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
           <folding>
             <element signature="e#46#82#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Social/socialmediaController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="27" column="72" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
+        <state relative-caret-position="193">
+          <caret line="150" column="22" lean-forward="true" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+          <folding>
+            <element signature="e#47#83#0#PHP" expanded="true" />
+            <element signature="e#1061#1110#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/action.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1240">
+          <caret line="62" column="34" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="34" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Boolean.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="58" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="58" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/log.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/measure_coste.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="13" column="51" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/measure_size.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Permission.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="110" column="27" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
+        <state relative-caret-position="678">
+          <caret line="143" column="1" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
           <folding>
             <element signature="e#23#64#0#PHP" expanded="true" />
+            <element signature="e#505#1225#0#PHP" />
+            <element signature="e#1231#1714#0#PHP" />
+            <element signature="e#1720#2550#0#PHP" />
+            <element signature="e#2556#2835#0#PHP" />
+            <element signature="e#2841#3037#0#PHP" />
+            <element signature="e#3043#3459#0#PHP" />
+            <element signature="e#3465#3731#0#PHP" />
+            <element signature="e#3737#3911#0#PHP" />
+            <element signature="e#3917#4064#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Role.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#23#58#0#PHP" expanded="true" />
+            <element signature="e#447#1061#0#PHP" />
+            <element signature="e#1067#1493#0#PHP" />
+            <element signature="e#1499#2329#0#PHP" />
+            <element signature="e#2335#2614#0#PHP" />
+            <element signature="e#2834#3196#0#PHP" />
+            <element signature="e#3202#3462#0#PHP" />
+            <element signature="e#3468#3642#0#PHP" />
+            <element signature="e#3648#3789#0#PHP" />
+            <marker date="1573725473362" expanded="true" signature="2618:2828" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#474#1120#0#PHP" />
+            <element signature="e#1126#1553#0#PHP" />
+            <element signature="e#1559#1909#0#PHP" />
+            <element signature="e#1938#2604#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/sizemeasure.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1180">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/verificationcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#515#1030#0#PHP" />
+            <element signature="e#1036#1367#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/phones.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1558">
+          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/costmeasure.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="59" column="88" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="59" selection-end-column="88" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/like.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1445">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/measures/measuresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="80" />
+          <folding>
+            <element signature="e#49#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RealEstate/realestateController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="196" column="11" lean-forward="true" selection-start-line="196" selection-start-column="11" selection-end-line="196" selection-end-column="11" />
+          <folding>
+            <element signature="e#51#67#0#PHP" expanded="true" />
+            <element signature="e#428#2946#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/realestate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#1610#2180#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/notificationlistener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+            <element signature="e#744#2186#0#PHP" />
+            <element signature="e#2002#2726#0#PHP" />
+            <element signature="e#2732#3026#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/realestate_site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+            <element signature="e#379#895#0#PHP" />
+            <element signature="e#901#1233#0#PHP" />
+            <element signature="e#1239#2069#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+            <element signature="e#482#1158#0#PHP" />
+            <element signature="e#1164#1582#0#PHP" />
+            <element signature="e#1588#1882#0#PHP" />
+            <element signature="e#1888#2034#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="176" column="33" selection-start-line="176" selection-start-column="14" selection-end-line="176" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="147" column="21" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
+          <folding>
+            <element signature="e#24#63#0#PHP" expanded="true" />
+            <element signature="e#528#1179#0#PHP" />
+            <element signature="e#1185#1619#0#PHP" />
+            <element signature="e#1925#2071#0#PHP" />
+            <element signature="e#4045#4302#0#PHP" />
+            <element signature="e#4308#4576#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Notification/notificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="88" column="23" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
+          <folding>
+            <element signature="e#53#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="643" column="20" selection-start-line="643" selection-start-column="20" selection-end-line="643" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="546" column="29" selection-start-line="546" selection-start-column="29" selection-end-line="546" selection-end-column="29" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="113" column="27" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
+        <state relative-caret-position="40">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
           <folding>
             <element signature="e#23#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="e#45#81#0#PHP" expanded="true" />
-            <element signature="e#284#1167#0#PHP" />
-            <element signature="e#1173#1584#0#PHP" />
-            <element signature="e#1922#2307#0#PHP" />
-            <element signature="e#1590#2036#0#PHP" />
-            <element signature="e#2043#2302#0#PHP" />
-            <element signature="e#2308#2535#0#PHP" />
-            <element signature="e#2541#2792#0#PHP" />
-            <element signature="e#2798#3055#0#PHP" />
-            <element signature="e#3061#3459#0#PHP" />
-            <element signature="e#3465#4324#0#PHP" />
-            <element signature="e#4517#5403#0#PHP" />
-            <element signature="e#5409#5832#0#PHP" />
-            <element signature="e#5838#6307#0#PHP" />
           </folding>
         </state>
       </provider>
