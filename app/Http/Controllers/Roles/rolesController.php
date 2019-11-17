@@ -14,6 +14,7 @@ use App\Session;
 use App\verificationcode;
 use App\Permission;
 use App\Boolean;
+use App\helper;
 
 class rolesController extends Controller
 {
@@ -23,64 +24,240 @@ class rolesController extends Controller
     //------------------------------------------------
     public function getAllPermission(Request $request){
 
+        // start timer
+        $startTime = microtime(true);
+        $action = 'getAllPermission';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
         $permission = Permission::getAllPermission();
 
         if($permission != null){
 
 
-            return json_encode(Permission::packResponse($permission, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse($permission, null, $code, $MSG));
         }else{
-            return json_encode(Permission::packResponse(null, null, 400, 'there are no permission!'));
+            // log
+            $MSG = 'there are no permission!';
+            $code = 300;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse(null, null, 400, $MSG));
         }
     }
 
     public function addMainPermission(Request $request){
+
+        // start timer
+        $startTime = microtime(true);
+        $action = 'addMainPermission';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(!Permission::checkIfNameExist($request->name)){
 
             $request['parent_id'] = 0;
             self::addPermission($request, 1);
 
-            return json_encode(Permission::packResponse(null, null, 200, 'success!'));
+
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(Permission::packResponse(null, null, 400, 'Permission name is exist!'));
+
+            // log
+            $MSG = 'Permission name is exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function addSubPermission(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'addSubPermission';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(!Permission::checkIfNameExist($request->name)){
 
             self::addPermission($request, 0);
 
+
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
             return json_encode(Permission::packResponse(null, null, 200, 'success!'));
         }else{
-            return json_encode(Permission::packResponse(null, null, 400, 'Permission name is exist!'));
+
+            // log
+            $MSG = 'Permission name is exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function editPermission(Request $request){
+
+        // start timer
+        $startTime = microtime(true);
+        $action = 'editPermission';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(Permission::permissionExist($request->id)) {
 
             Permission::edit($request);
 
 
-            return json_encode(Permission::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(Permission::packResponse(null, null, 400, 'Permission not exist!'));
+
+            // log
+            $MSG = 'Permission not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function deletePermission(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'deletePermission';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(Permission::permissionExist($request->id)) {
 
             Permission::remove($request->id);
 
-            return json_encode(Permission::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(Permission::packResponse(null, null, 400, 'Permission not exist!'));
+
+            // log
+            $MSG = 'Permission not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Permission::packResponse(null, null, $code, $MSG));
         }
     }
 
@@ -90,50 +267,186 @@ class rolesController extends Controller
     //------------------------------------------------
     //------------------------------------------------
     public function GetAllRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'GetAllRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $role = Role::getAllRole();
 
         if($role != null){
 
-            return json_encode(Role::packResponse($role, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse($role, null, $MSG, $code));
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'there are no role!'));
+
+            // log
+            $MSG = 'there are no role!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function addRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'addRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(!Role::checkIfNameExist($request->name)){
 
             self::_addRole($request, 1);
 
-            return json_encode(Role::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'Role name is exist!'));
+
+            // log
+            $MSG = 'Role name is exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function editRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'editRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(Role::RoleExist($request->id)) {
 
             Role::edit($request);
 
-            return json_encode(Role::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $MSG, $MSG));
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'Role not exist!'));
+
+            // log
+            $MSG = 'Role not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function deleteRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'deleteRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if(Role::RoleExist($request->id)) {
 
             Role::remove($request->id);
 
-            return json_encode(Role::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'Role not exist!'));
+
+            // log
+            $MSG = 'Role not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
@@ -142,6 +455,15 @@ class rolesController extends Controller
     //------------------------------------------------
     //------------------------------------------------
     public function attachPermissionToRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'attachPermissionToRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $permission = Permission::where('id', $request->permission_id)->first();
 
@@ -152,16 +474,63 @@ class rolesController extends Controller
 
                 $role->attachPermission($permission);
 
-                return json_encode(Role::packResponse(null, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }else{
-                return json_encode(Role::packResponse(null, null, 400, 'role not exist!'));
+
+                // log
+                $MSG = 'role not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'permission not exist!'));
+
+            // log
+            $MSG = 'permission not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function deAttachPermissionToRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'deAttachPermissionToRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $permission = Permission::where('id', $request->permission_id)->first();
 
@@ -172,12 +541,50 @@ class rolesController extends Controller
 
                 $role->detachPermission($permission);
 
-                return json_encode(Role::packResponse(null, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }else{
-                return json_encode(Role::packResponse(null, null, 400, 'role not exist!'));
+
+                // log
+                $MSG = 'role not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'permission not exist!'));
+
+            // log
+            $MSG = 'permission not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
@@ -188,6 +595,15 @@ class rolesController extends Controller
     //------------------------------------------------
 
     public function attachPermissionToUser(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'attachPermissionToUser';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $user = User::where('id', $request->user_id)->first();
 
@@ -198,16 +614,63 @@ class rolesController extends Controller
 
                 $user->attachPermission($permission);
 
-                return json_encode(Role::packResponse(null, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }else{
-                return json_encode(Role::packResponse(null, null, 400, 'permission not exist!'));
+
+                // log
+                $MSG = 'permission not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'user not exist!'));
+
+            // log
+            $MSG = 'user not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function deAttachPermissionToUser(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'deAttachPermissionToUser';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $user = User::where('id', $request->user_id)->first();
 
@@ -218,12 +681,50 @@ class rolesController extends Controller
 
                 $user->detachPermission($permission);
 
-                return json_encode(Role::packResponse(null, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }else{
-                return json_encode(Role::packResponse(null, null, 400, 'permission not exist!'));
+
+                // log
+                $MSG = 'permission not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'user not exist!'));
+
+            // log
+            $MSG = 'user not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
@@ -233,6 +734,15 @@ class rolesController extends Controller
     //------------------------------------------------
     //------------------------------------------------
     public function attachUserToRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'attachUserToRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $user = User::where('id', $request->user_id)->first();
 
@@ -243,16 +753,64 @@ class rolesController extends Controller
 
                 $user->attachRole($role);
 
-                return json_encode(Role::packResponse(null, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }else{
-                return json_encode(Role::packResponse(null, null, 400, 'role not exist!'));
+
+                // log
+                $MSG = 'role not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'user not exist!'));
+
+            // log
+            $MSG = 'user not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function deAttachUserToRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'deAttachUserToRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
 
         $user = User::where('id', $request->user_id)->first();
 
@@ -263,12 +821,51 @@ class rolesController extends Controller
 
                 $user->detachRole($role);
 
-                return json_encode(Role::packResponse(null, null, 200, 'success!'));
+
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }else{
-                return json_encode(Role::packResponse(null, null, 400, 'role not exist!'));
+
+                // log
+                $MSG = 'role not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Role::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'user not exist!'));
+
+            // log
+            $MSG = 'user not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
@@ -280,6 +877,15 @@ class rolesController extends Controller
     //------------------------------------------------
 
     public function hasRole(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'hasRole';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $user = User::where('id', $request->user_id)->first();
 
@@ -287,16 +893,63 @@ class rolesController extends Controller
 
             if($user->hasRole($request->roleName)){
 
-                return json_encode(Boolean::packResponse(true, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Boolean::packResponse(true, null, $code, $MSG));
             }else{
-                return json_encode(Boolean::packResponse(false, null, 400, 'user not have this role!'));
+
+                // log
+                $MSG = 'user not have this role!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Boolean::packResponse(false, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'user not exist!'));
+
+            // log
+            $MSG = 'user not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function hasPermission(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'hasPermission';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         $user = User::where('id', $request->user_id)->first();
 
@@ -304,12 +957,50 @@ class rolesController extends Controller
 
             if($user->can($request->permissionName)){
 
-                return json_encode(Boolean::packResponse(true, null, 200, 'success!'));
+                // log
+                $MSG = 'success!';
+                $code = 200;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Boolean::packResponse(true, null, $code, $MSG));
             }else{
-                return json_encode(Boolean::packResponse(false, null, 400, 'user not have this role!'));
+
+                // log
+                $MSG = 'user not have this role!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(Boolean::packResponse(false, null, $code, $MSG));
             }
         }else{
-            return json_encode(Role::packResponse(null, null, 400, 'user not exist!'));
+
+            // log
+            $MSG = 'user not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(Role::packResponse(null, null, $code, $MSG));
         }
     }
 

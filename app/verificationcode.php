@@ -56,26 +56,31 @@ class verificationcode extends Model
         $msg = [];
         $msg['MsgNum'] = [];
         $msg['msg'] = '';
-//        dd($AllData);
-        foreach ($AllData as $verificationCode) {
 
-            if ($verificationCode != null) {
-                if ($verificationCode->used == 0) {
-                    if ($verificationCode->verificationcode == $verificationcode) {
-                        if (self::totalduration(Carbon::now(), $verificationCode->created_at, 5)) {
-                            return [true, 'success'];
+        if(sizeof($AllData) > 0) {
+            foreach ($AllData as $verificationCode) {
+
+                if ($verificationCode != null) {
+                    if ($verificationCode->used == 0) {
+                        if ($verificationCode->verificationcode == $verificationcode) {
+                            if (self::totalduration(Carbon::now(), $verificationCode->created_at, 5)) {
+
+                                return [true, 'success'];
+                            } else {
+                                $msg = self::addErrorMsgStatement($msg, 0, 'verification code is not available now');
+                            }
                         } else {
-                            $msg = self::addErrorMsgStatement($msg, 0, 'verification code is not available now');
+                            $msg = self::addErrorMsgStatement($msg, 1, 'wrong verification code');
                         }
                     } else {
-                        $msg = self::addErrorMsgStatement($msg, 1, 'wrong verification code');
+                        $msg = self::addErrorMsgStatement($msg, 2, 'verification code has been used priviously');
                     }
                 } else {
-                    $msg = self::addErrorMsgStatement($msg, 2, 'verification code has been used priviously');
+                    $msg = self::addErrorMsgStatement($msg, 3, 'no verification code for this user');
                 }
-            } else {
-                $msg = self::addErrorMsgStatement($msg, 3, 'no verification code for this user');
             }
+        }else{
+            $msg = self::addErrorMsgStatement($msg, 3, 'there are no availble VerificationCode for this user!');
         }
 
         return [false, $msg['msg']];
@@ -114,18 +119,23 @@ class verificationcode extends Model
     }
 
     public static function addErrorMsgStatement($errorMsg, $MsgNum, $msg){
+        try {
+            if (!in_array($MsgNum, $errorMsg['MsgNum'])) {
 
-        if(!in_array($MsgNum, $errorMsg['MsgNum'])) {
-            array_push($errorMsg['MsgNum'], $MsgNum);
-            if (strlen($errorMsg['msg']) > 0) {
-                $errorMsg['msg'] .= ' or ' . $msg;
-                return $errorMsg;
-            } else {
-                $errorMsg['msg'] = $msg;
+                array_push($errorMsg['MsgNum'], $MsgNum);
+                if (strlen($errorMsg['msg']) > 0) {
+                    $errorMsg['msg'] .= ' or ' . $msg;
+                    return $errorMsg;
+                } else {
+                    $errorMsg['msg'] = $msg;
+                    return $errorMsg;
+                }
+            }else{
                 return $errorMsg;
             }
+        } catch (Exception $e) {
+            dd($errorMsg);
         }
-
     }
 
 }

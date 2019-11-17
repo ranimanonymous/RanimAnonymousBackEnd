@@ -25,6 +25,7 @@ class User extends Authenticatable
     public static $tbimage = 'image';
     public static $tbpassword = 'password';
     public static $tbverified = 'verified';
+    public static $tbblocked = 'blocked';
     public static $tbcreated_at = 'created_at';
     public static $tbupdated_at = 'updated_at';
 
@@ -41,6 +42,7 @@ class User extends Authenticatable
             $this->image = $request->image;
             $this->password = $request->password;
             $this->verified = 0;
+            $this->blocked = 0;
             $this->created_at = Carbon::now();
             $this->updated_at = Carbon::now();
         }else {
@@ -53,11 +55,13 @@ class User extends Authenticatable
             $this->image = $request['image'];
             $this->password = $request['password'];
             $this->verified = 0;
+            $this->blocked = 0;
             $this->created_at = Carbon::now();
             $this->updated_at = Carbon::now();
         }
     }
 
+    // attribute that will be returned to frontend
     public static function getallAttribute($data){
 
         $result = [];
@@ -72,6 +76,7 @@ class User extends Authenticatable
         $result[self::$tbimage] = $data->image;
 //        $result[self::$tbpassword] = $data->password;
         $result[self::$tbverified] = $data->verified;
+//        $result[self::$tbblocked] = $data->blocked;
 //        $result[self::$tbcreated_at] = $data->created_at;
 //        $result[self::$tbupdated_at] = $data->updated_at;
 
@@ -135,6 +140,17 @@ class User extends Authenticatable
         return $Data;
     }
 
+    public static function getUserBySession($userSession){
+
+        $id = Session::getUserIdBySession($userSession);
+
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $id)
+            ->first();
+
+        return $Data;
+    }
+
     public static function compairPasswordd($user, $password){
 
         $Data = DB::table(self::$tableName)
@@ -150,7 +166,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public static function CheckAdding($object){
+    public static function CheckIfUserExist($object){
         // check username
         if(!self::getUserByUserName($object->username)){
             // check email

@@ -9,7 +9,7 @@ use DB;
 
 class Boolean extends Model
 {
-    public static function  packResponse($data, $sessionKey, $code, $errorMsg){
+    public static function  packResponse($data, $code, $errorMsg){
 
         $Result['data'] = $data;
 
@@ -20,9 +20,8 @@ class Boolean extends Model
         }else{
             $Result['Msg'] = $errorMsg;
         }
-
+//        dd($Result);
         return $Result;
     }
-
 
 }

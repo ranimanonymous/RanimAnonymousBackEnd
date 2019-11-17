@@ -11,20 +11,21 @@ use Illuminate\Http\Resources\Json;
 use App\User;
 use App\Session;
 use App\verificationcode;
+use App\helper;
 
 class authController extends Controller
 {
-
+    // applied
     public function login(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'login';
+        //-----------------------
 
         $user = new User();
-        if(is_numeric($request['username'])){
-            $user = User::where('phone', $request['username'])->first();
-        }else if (strpos($request['username'], '@') !== false && strpos($request['username'], '.com') !== false){
-            $user = User::where('email', $request['username'])->first();
-        }else{
-            $user = User::where('username', $request['username'])->first();
-        }
+
+        // $request['username'] may be name or email or number
+        $user = self::getUserObject($request['username']);
 
         if ($user != null) {
 
@@ -34,115 +35,365 @@ class authController extends Controller
 
                     $session = self::generateSession($user);
 
-                    return json_encode(User::packResponse($user, $session->payload, 200, null));
+                    // log
+                    $MSG = 'welcome';
+                    $code = 200;
+                    helper::insertIntoLog(helper::BuildLogObject(
+                        $code,
+                        $MSG,
+                        0,
+                        $action,
+                        microtime(true) - $startTime,
+                        $request
+                    ));
+                    //-----------------------
+                    return json_encode(User::packResponse($user, $session->payload, $code, $MSG));
 
                 } else {
-                    return json_encode(User::packResponse(null, null, 400, 'wrong Password!'));
+
+                    // log
+                    $MSG = 'wrong Password!';
+                    $code = 400;
+                    helper::insertIntoLog(helper::BuildLogObject(
+                        $code,
+                        $MSG,
+                        0,
+                        $action,
+                        microtime(true) - $startTime,
+                        $request
+                    ));
+                    //-----------------------
+                    return json_encode(User::packResponse(null, null, $code, $MSG));
                 }
             } else {
-                return json_encode(User::packResponse(null, null, 400, 'you need to verify your account before logging in!'));
+
+                // log
+                $MSG = 'you need to verify your account before logging in!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    0,
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(User::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+
+            // log
+            $MSG = 'userName is not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }
     }
 
+    // applied
     public function register(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'register';
+        //-----------------------
 
-        $validity = User::CheckAdding($request);
+
+        $validity = User::CheckIfUserExist($request);
 
         if($validity[0]) {
+
 
             $user = self::addUser($request);
 
             self::addVerificationCode($user, 1);
 
-            return json_encode(User::packResponse($user, null, 200, null));
+            // log
+            $MSG = 'you have been registered successfuly';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse($user, null, $code, $MSG));
         }else{
-            return json_encode(User::packResponse(null, null, 400, $validity[1]));
+
+            // log
+            $MSG = $validity[1];
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }
     }
 
     public function editUser(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'editUser';
+        //-----------------------
 
-        $user = User::where('id', $request['id'])->first();
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if ($user != null) {
 
             User::edit($request);
 
-            return json_encode(User::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'user has been edited successfuly!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+
+            // log
+            $MSG = 'userName is not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }
     }
 
+    // applied
+    // logging out user from last active session - no checking on session
     public function logout(Request $request){
 
-        $user = User::getUserByUserName($request['username']);
+        // start timer
+        $startTime = microtime(true);
+        $action = 'logout';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
         if($user){
 
             Session::updateLastActivity(null, $user->id);
 
-            return json_encode(User::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+
+            // log
+            $MSG = 'userName is not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }
 
     }
 
 
     public function verifyAccount(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'verifyAccount';
+        //-----------------------
 
         // $verifingType :   1 -> verify registerd user,   2 -> verify reseting password
         $request['verificationType'] = 1;
         $request['newpassword'] = null;
-        self::verify($request);
+        $returnObect = self::verify($request);
+
+        // log
+        helper::insertIntoLog(helper::BuildLogObject(
+            $returnObect['code'],
+            $returnObect['Msg'],
+            0,
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode($returnObect);
 
     }
 
     public function verifyRestingPassword(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'verifyRestingPassword';
+        //-----------------------
 
         // $verifingType :   1 -> verify registerd user,   2 -> verify reseting password
         $request['verificationType'] = 2;
-        self::verify($request);
+        // $request['newpassword'] will be inside the request
+        $returnObect = self::verify($request);
+
+        // log
+        helper::insertIntoLog(helper::BuildLogObject(
+            $returnObect['code'],
+            $returnObect['Msg'],
+            0,
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode($returnObect);
 
     }
 
     public function sendVerificationCodeRegistering(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'sendVerificationCodeRegistering';
+        //-----------------------
 
         // $verifingType :   1 -> verify registerd user,   2 -> verify reseting password
         $request['verificationType'] = 1;
-        self::sendVerificationCode($request);
+        $returnObect = self::sendVerificationCode($request);
 
+        // log
+        helper::insertIntoLog(helper::BuildLogObject(
+            $returnObect['code'],
+            $returnObect['Msg'],
+            0,
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode($returnObect);
     }
 
     public function sendVerificationCodeResetingPasssword(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'sendVerificationCodeResetingPasssword';
+        //-----------------------
 
         // $verifingType :   1 -> verify registerd user,   2 -> verify reseting password
         $request['verificationType'] = 2;
-        self::sendVerificationCode($request);
+        $returnObect = self::sendVerificationCode($request);
 
+        // log
+        helper::insertIntoLog(helper::BuildLogObject(
+            $returnObect['code'],
+            $returnObect['Msg'],
+            0,
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode($returnObect);
     }
 
     public function resetPassword(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'resetPassword';
+        //-----------------------
 
         $user = User::getUserByUserName($request['username']);
+
         if($user != null){
 
             self::addVerificationCode($user, 2);
 
-            return json_encode(User::packResponse(null, null, 200, 'success!'));
+            // log
+            $MSG = 'your password has been reset successfuly!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+
+            // log
+            $MSG = 'userName is not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }
 
     }
 
     public function changePassword(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'changePassword';
+        //-----------------------
 
-        $user = User::getUserByUserName($request['username']);
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
 
 
         if(User::checkActiveUser($user)) {
@@ -152,15 +403,66 @@ class authController extends Controller
                     User::changePassword($user, $request['newpassword']);
 
 
-                    return json_encode(User::packResponse(null, null, 200, 'success!'));
+                    // log
+                    $MSG = 'password has been changed successfuly!';
+                    $code = 200;
+                    helper::insertIntoLog(helper::BuildLogObject(
+                        $code,
+                        $MSG,
+                        $request['user_id'],
+                        $action,
+                        microtime(true) - $startTime,
+                        $request
+                    ));
+                    //-----------------------
+                    return json_encode(User::packResponse(null, null, $code, $MSG));
                 } else {
-                    return json_encode(User::packResponse(null, null, 400, 'wrong Password!'));
+
+                    // log
+                    $MSG = 'wrong Password!';
+                    $code = 400;
+                    helper::insertIntoLog(helper::BuildLogObject(
+                        $code,
+                        $MSG,
+                        $request['user_id'],
+                        $action,
+                        microtime(true) - $startTime,
+                        $request
+                    ));
+                    //-----------------------
+                    return json_encode(User::packResponse(null, null, $code, $MSG));
                 }
             } else {
-                return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+
+                // log
+                $MSG = 'userName is not exist!';
+                $code = 400;
+                helper::insertIntoLog(helper::BuildLogObject(
+                    $code,
+                    $MSG,
+                    $request['user_id'],
+                    $action,
+                    microtime(true) - $startTime,
+                    $request
+                ));
+                //-----------------------
+                return json_encode(User::packResponse(null, null, $code, $MSG));
             }
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'you need to verify your account before logging in!'));
+
+            // log
+            $MSG = 'you need to verify your account before logging in!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
         }
     }
 
@@ -173,35 +475,40 @@ class authController extends Controller
 
         //        dd($request->all());
         $user = new User();
-        $user = User::getUserByUserName($request['username']);
+
+        $user = self::getUserObject($request['username']);
 
         if($user != null){
 
             $validityOfVerificationCode = verificationcode::compairVerificationCode($user, $request['verificationcode'], $request['verificationType']);
+
             if($validityOfVerificationCode[0]){
 
                 verificationcode::verifyAccount($request['verificationcode'], $user, $request['verificationType'], $request['newpassword']);
 
-                return json_encode(User::packResponse(null, null, 200, 'success!'));
+                return User::packResponse(null, null, 200, 'your account has been verified successfuly!');
             }else{
-                return json_encode(User::packResponse(null, null, 400, $validityOfVerificationCode[1]));
+                return User::packResponse(null, null, 400, $validityOfVerificationCode[1]);
             }
 
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+            return User::packResponse(null, null, 400, 'userName is not exist!');
         }
     }
 
     public function sendVerificationCode($request){
 
-        $user = User::getUserByUserName($request['username']);
+        $user = new User();
+
+        $user = self::getUserObject($request['username']);
+
         if($user != null){
 
             self::addVerificationCode($user, $request['verificationType']);
 
-            return json_encode(User::packResponse(null, null, 200, 'success!'));
+            return User::packResponse(null, null, 200, 'the verification code has been sent to you successfuly!');
         }else{
-            return json_encode(User::packResponse(null, null, 400, 'userName is not exist!'));
+            return User::packResponse(null, null, 400, 'userName is not exist!');
         }
     }
 
@@ -216,7 +523,19 @@ class authController extends Controller
             return $session;
 
         } catch (Exception $e) {
-            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
+            // log
+            $MSG = 'requested function';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                'generateSession',
+                -1,
+                -1
+            ));
+            //-----------------------
+//            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
     }
 
@@ -225,13 +544,25 @@ class authController extends Controller
         try{
 
             $user = new User();
-            $user->setallAttribute($object);
+            $user->setallAttribute($object);//dd($user);
             $user->save();
 
             return $user;
 
         } catch (Exception $e) {
-            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
+            // log
+            $MSG = 'requested function';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                'addUser',
+                -1,
+                -1
+            ));
+            //-----------------------
+//            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
     }
 
@@ -248,7 +579,30 @@ class authController extends Controller
             $verificationcode->setallAttribute($data);
             $verificationcode->save();
         } catch (Exception $e) {
-            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
+            // log
+            $MSG = 'requested function';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                0,
+                'addVerificationCode',
+                -1,
+                -1
+            ));
+            //-----------------------
+//            return json_encode(User::packResponse(null, null, 400, $e->getMessage()));
         }
+    }
+
+    public function getUserObject($input){
+        if(is_numeric($input)){
+            $user = User::where('phone', $input)->first();
+        }else if (strpos($input, '@') !== false && strpos($input, '.com') !== false){
+            $user = User::where('email', $input)->first();
+        }else{
+            $user = User::where('username', $input)->first();
+        }
+        return $user;
     }
 }

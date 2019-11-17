@@ -60,6 +60,7 @@ class Session extends Model
         return $session;
     }
 
+    // to log user out
     public static function updateLastActivity($Session_id, $user_id){
         if($Session_id == null){
             $AllData = DB::table(self::$tableName)
@@ -75,5 +76,22 @@ class Session extends Model
                 ]);
         }
 
+    }
+
+    public static function getUserIdBySession($userSession){
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbpayload, '=', $userSession)
+            ->select(self::$tableName . '.' . self::$tbuser_id)
+            ->first();
+        return $Data->user_id;
+    }
+
+    public static function isLoggedIn($session){
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbpayload, '=', $session)
+            ->select(self::$tableName . '.' . self::$tblast_activity)
+            ->first();
+        if($Data->last_activity) return true;
+        return false;
     }
 }
