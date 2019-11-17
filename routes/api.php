@@ -111,3 +111,75 @@ Route::post('/hasPermission', 'Roles\rolesController@hasPermission')->name('hasP
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
+
+
+
+//------------------------------------------------
+// RealEstate
+//------------------------------------------------
+//------------------------------------------------
+Route::post('/createRealEstate', 'RealEstate\realestateController@createRealEstate')->name('createRealEstate');//->middleware('checkRole');
+Route::post('/DeleteRealEstate', 'RealEstate\realestateController@DeleteRealEstate')->name('DeleteRealEstate');//->middleware('checkRole');
+Route::post('/HideRealEstate', 'RealEstate\realestateController@HideRealEstate')->name('HideRealEstate');//->middleware('checkRole');
+Route::post('/unHideRealEstate', 'RealEstate\realestateController@unHideRealEstate')->name('unHideRealEstate');//->middleware('checkRole');
+Route::post('/getRealEstatesLists', 'RealEstate\realestateController@getRealEstatesLists')->name('getRealEstatesLists');
+Route::post('/hardDelete', 'RealEstate\realestateController@hardDelete')->name('hardDelete');
+Route::post('/seenRealEstate', 'RealEstate\realestateController@seenRealEstate')->name('seenRealEstate');
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+
+
+//------------------------------------------------
+// CostMeasure
+//------------------------------------------------
+//------------------------------------------------
+Route::post('/addNewCostMeasure', 'measures\measuresController@addNewCostMeasure')->name('addNewCostMeasure');
+Route::post('/editCostMeasure', 'measures\measuresController@editCostMeasure')->name('editCostMeasure');
+Route::post('/deleteCostMeasure', 'measures\measuresController@deleteCostMeasure')->name('deleteCostMeasure');
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+
+
+//------------------------------------------------
+// RealEstate
+//------------------------------------------------
+//------------------------------------------------
+Route::post('/addNewSizeMeasure', 'measures\measuresController@addNewSizeMeasure')->name('addNewSizeMeasure');
+Route::post('/editSizeMeasure', 'measures\measuresController@editSizeMeasure')->name('editSizeMeasure');
+Route::post('/deleteSizeMeasure', 'measures\measuresController@deleteSizeMeasure')->name('deleteSizeMeasure');
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+
+
+//------------------------------------------------
+// socialmedia
+//------------------------------------------------
+//------------------------------------------------
+Route::post('/like', 'Social\socialmediaController@like')->name('like');
+Route::post('/dislike', 'Social\socialmediaController@dislike')->name('dislike');
+Route::post('/likesCountOfRealEsatate', 'Social\socialmediaController@likesCountOfRealEsatate')->name('likesCountOfRealEsatate');
+Route::post('/likesUserListsOfRealEstate', 'Social\socialmediaController@likesUserListsOfRealEstate')->name('likesUserListsOfRealEstate');
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+
+
+
+//------------------------------------------------
+// socialmedia
+//------------------------------------------------
+//------------------------------------------------
+Route::post('/addNotificationListener', 'Notification\notificationController@addNotificationListener')->name('addNotificationListener');
+Route::post('/getNumberOfNotification', 'Notification\notificationController@getNumberOfNotification')->name('getNumberOfNotification');
+Route::post('/getNotificationList', 'Notification\notificationController@getNotificationList')->name('getNotificationList');
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+
+
+
+
+

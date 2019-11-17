@@ -1,0 +1,2438 @@
+{
+	"info": {
+		"_postman_id": "0ebcd9b2-708b-47c2-bbed-b200e45d39d0",
+		"name": "DownTown",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "mhde7yfttgjkhok",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "kjgkgkjtt",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "kjhkjhtt",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kguitthf@kjh.com",
+									"type": "text"
+								},
+								{
+									"key": "bornDate",
+									"value": "1997-09-15",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09876543",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "image1.jpg",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "aaaa",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyaccount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Abode",
+									"type": "text"
+								},
+								{
+									"key": "verificationcode",
+									"value": "653861",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/verifyaccount",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verifyaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyRestingPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Abode",
+									"type": "text"
+								},
+								{
+									"key": "verificationcode",
+									"value": "760893",
+									"type": "text"
+								},
+								{
+									"key": "newpassword",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/verifyRestingPassword",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verifyRestingPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "34",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "changePassword",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Abode",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234567",
+									"type": "text"
+								},
+								{
+									"key": "newpassword",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/changePassword",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendVerificationCodeRegistering",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Abode",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sendVerificationCodeRegistering",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sendVerificationCodeRegistering"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendVerificationCodeResetingPasssword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Abode",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sendVerificationCodeResetingPasssword",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sendVerificationCodeResetingPasssword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Abode",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resetPassword",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "8d8773105d9e4124e89f45b1436c7abf",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Abode9",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "firstname1",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "lastname1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email9@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "bornDate",
+									"value": "1997-09-15",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0930451142",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "image1.jpg",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/editUser",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"editUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Permission",
+					"item": [
+						{
+							"name": "addMainPermission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "permissionName",
+											"type": "text"
+										},
+										{
+											"key": "display_name",
+											"value": "permissionDisplay",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "permissionDescription",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/addMainPermission",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"addMainPermission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addSubPermission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "SubPermissionnName1",
+											"type": "text"
+										},
+										{
+											"key": "display_name",
+											"value": "SubPermissionDisplay1",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "SubPermissionDescription1",
+											"type": "text"
+										},
+										{
+											"key": "parent_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/addSubPermission",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"addSubPermission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editPermission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "SubPermissionnName2",
+											"type": "text"
+										},
+										{
+											"key": "display_name",
+											"value": "SubPermissionDisplay2",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "SubPermissionDescription2",
+											"type": "text"
+										},
+										{
+											"key": "parent_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/editPermission",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"editPermission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePermission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deletePermission",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deletePermission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllPermission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/getAllPermission",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"getAllPermission"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Role",
+					"item": [
+						{
+							"name": "addRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "role",
+											"type": "text"
+										},
+										{
+											"key": "display_name",
+											"value": "dis_role",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "des_role",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/addRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"addRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/GetAllRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"GetAllRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "role2",
+											"type": "text"
+										},
+										{
+											"key": "display_name",
+											"value": "desrole2",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "desrole2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/editRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"editRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deleteRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deleteRole"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Permission&Role",
+					"item": [
+						{
+							"name": "attachPermissionToRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "permission_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "role_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/attachPermissionToRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"attachPermissionToRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deAttachPermissionToRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "permission_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "role_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deAttachPermissionToRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deAttachPermissionToRole"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User&Role",
+					"item": [
+						{
+							"name": "attachUserToRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "34",
+											"type": "text"
+										},
+										{
+											"key": "role_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/attachUserToRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"attachUserToRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deAttachRoleToUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "34",
+											"type": "text"
+										},
+										{
+											"key": "role_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deAttachRoleToUser",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deAttachRoleToUser"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User&Permission",
+					"item": [
+						{
+							"name": "attachPermissionToUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "34",
+											"type": "text"
+										},
+										{
+											"key": "permission_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/attachPermissionToUser",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"attachPermissionToUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deAttachPermissionToUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "34",
+											"type": "text"
+										},
+										{
+											"key": "permission_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deAttachPermissionToUser",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deAttachPermissionToUser"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "checkingUserPermission&Role",
+					"item": [
+						{
+							"name": "hasRole",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "34",
+											"type": "text"
+										},
+										{
+											"key": "roleName",
+											"value": "role",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/hasRole",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"hasRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "hasPermission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "34",
+											"type": "text"
+										},
+										{
+											"key": "permissionName",
+											"value": "SubPermissionnName",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/hasPermission",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"hasPermission"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "RealEstate",
+			"item": [
+				{
+					"name": "createRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "loggedIn",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "400",
+									"type": "text"
+								},
+								{
+									"key": "size_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "roomNum",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "cost",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "coste_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "hey",
+									"type": "text"
+								},
+								{
+									"key": "phones",
+									"value": "0930451133&0993995987",
+									"type": "text"
+								},
+								{
+									"key": "site_id",
+									"value": "51",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/createRealEstate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"createRealEstate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "realEstate_id",
+									"value": "70",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/DeleteRealEstate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"DeleteRealEstate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HideRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "realEstate_id",
+									"value": "70",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/HideRealEstate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"HideRealEstate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unHideRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "realEstate_id",
+									"value": "70",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/unHideRealEstate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"unHideRealEstate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRealEstatesLists",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "site_id",
+									"value": "49",
+									"type": "text"
+								},
+								{
+									"key": "offset",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "roomNum",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "size_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cost",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "coste_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getRealEstatesLists",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getRealEstatesLists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hardDelete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "realEstate_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/hardDelete",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"hardDelete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seenRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "notification_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/seenRealEstate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"seenRealEstate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Measures",
+			"item": [
+				{
+					"name": "Cost",
+					"item": [
+						{
+							"name": "addNewCostMeasure",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "measureName",
+											"value": "Syrian pounds",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/addNewCostMeasure",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"addNewCostMeasure"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editCostMeasure",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "measureId",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "measureName",
+											"value": "Syrian pounds1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/editCostMeasure",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"editCostMeasure"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCostMeasure",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "measureId",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deleteCostMeasure",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deleteCostMeasure"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Size",
+					"item": [
+						{
+							"name": "addNewSizeMeasure",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "sizeName",
+											"value": "meter",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/addNewSizeMeasure",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"addNewSizeMeasure"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editSizeMeasure",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "measureId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "sizeName",
+											"value": "meter2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/editSizeMeasure",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"editSizeMeasure"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSizeMeasure",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "measureId",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "measureName",
+											"value": "Syrian pounds1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/deleteSizeMeasure",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"deleteSizeMeasure"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "socialMedia",
+			"item": [
+				{
+					"name": "like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "realEstate_id",
+									"value": "83",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/like",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dislike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "realEstate_id",
+									"value": "83",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/dislike",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"dislike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likesCountOfRealEsatate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "realEstate_id",
+									"value": "83",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/likesCountOfRealEsatate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"likesCountOfRealEsatate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likesUserListsOfRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "realEstate_id",
+									"value": "83",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/likesUserListsOfRealEstate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"likesUserListsOfRealEstate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "addNotificationListener",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "site_id",
+									"value": "49",
+									"type": "text"
+								},
+								{
+									"key": "roomNum1",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "roomNum2",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "m_cost",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cost1",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "cost2",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "m_size",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "size1",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "size2",
+									"value": "500",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addNotificationListener",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addNotificationListener"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNumberOfNotification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1901fb6e7b59c20b22fa83ee96b355f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getNumberOfNotification",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getNumberOfNotification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotificationList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1901fb6e7b59c20b22fa83ee96b355f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getNotificationList",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getNotificationList"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
