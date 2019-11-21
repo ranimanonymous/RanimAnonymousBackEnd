@@ -137,18 +137,20 @@ Route::post('/seenRealEstate', 'RealEstate\realestateController@seenRealEstate')
 Route::post('/addNewCostMeasure', 'measures\measuresController@addNewCostMeasure')->name('addNewCostMeasure');
 Route::post('/editCostMeasure', 'measures\measuresController@editCostMeasure')->name('editCostMeasure');
 Route::post('/deleteCostMeasure', 'measures\measuresController@deleteCostMeasure')->name('deleteCostMeasure');
+Route::post('/getCostMeasuresList', 'measures\measuresController@getCostMeasuresList')->name('getCostMeasuresList');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
 
 
 //------------------------------------------------
-// RealEstate
+// SizeMeasure
 //------------------------------------------------
 //------------------------------------------------
 Route::post('/addNewSizeMeasure', 'measures\measuresController@addNewSizeMeasure')->name('addNewSizeMeasure');
 Route::post('/editSizeMeasure', 'measures\measuresController@editSizeMeasure')->name('editSizeMeasure');
 Route::post('/deleteSizeMeasure', 'measures\measuresController@deleteSizeMeasure')->name('deleteSizeMeasure');
+Route::post('/getSizeMeasuresList', 'measures\measuresController@getSizeMeasuresList')->name('getSizeMeasuresList');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
@@ -175,6 +177,7 @@ Route::post('/likesUserListsOfRealEstate', 'Social\socialmediaController@likesUs
 Route::post('/addNotificationListener', 'Notification\notificationController@addNotificationListener')->name('addNotificationListener');
 Route::post('/getNumberOfNotification', 'Notification\notificationController@getNumberOfNotification')->name('getNumberOfNotification');
 Route::post('/getNotificationList', 'Notification\notificationController@getNotificationList')->name('getNotificationList');
+Route::post('/getNotificationListenerList', 'Notification\notificationController@getNotificationListenerList')->name('getNotificationListenerList');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------

@@ -127,6 +127,34 @@ class measuresController extends Controller
         return json_encode(costmeasure::packResponse($costmeasure, $code, $MSG));
 
     }
+
+    public function getCostMeasuresList(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'getCostMeasuresList';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $CostMeasuresList = costmeasure::getCostMeasuresList($request['site_id']);
+
+        // log
+        $MSG = 'success!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(costmeasure::packResponse($CostMeasuresList, $code, $MSG));
+    }
     //-------------------------------------------
     //-------------------------------------------
     //-------------------------------------------
@@ -243,6 +271,34 @@ class measuresController extends Controller
         //-----------------------
         return json_encode(sizemeasure::packResponse($sizemeasure, $code, $MSG));
 
+    }
+
+    public function getSizeMeasuresList(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'getSizeMeasuresList';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $SizeMeasuresList = sizemeasure::getSizeMeasuresList($request['size_id']);
+
+        // log
+        $MSG = 'success!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(sizemeasure::packResponse($SizeMeasuresList, $code, $MSG));
     }
     //-------------------------------------------
     //-------------------------------------------

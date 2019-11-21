@@ -100,6 +100,34 @@ class notificationController extends Controller
         return json_encode(notificationlistener::packResponse($notificationList, $code, $MSG));
     }
 
+    public function getNotificationListenerList(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'getNotificationListenerList';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $notificationList = notificationlistener::getNotificationListenerList($request['user_id']);
+
+        // log
+        $MSG = 'success!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(notificationlistener::packResponse($notificationList, $code, $MSG));
+    }
+
 
 
 }

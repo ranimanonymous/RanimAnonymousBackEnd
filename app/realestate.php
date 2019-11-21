@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Carbon\Carbon;
 
+use App\realestate_site;
+
 class realestate extends Model
 {
 
@@ -101,21 +103,26 @@ class realestate extends Model
         $page = 4;
 
         $data = DB::table(self::$tableName);
-        $data->where(self::$tableName    . '.' . self::$tbdeleted, '=', 0);
-        $data->where(self::$tableName    . '.' . self::$tbavailable, '=', 1);
+        $data->join(realestate_site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+        $data->where(self::$tableName . '.' . self::$tbdeleted, '=', 0);
+        $data->where(self::$tableName . '.' . self::$tbavailable, '=', 1);
+
+        $sites = realestate_site::getSiteDerivation($request['site_id']);
 
         if($request['site_id'] != null){
-
+            $data->whereIn(realestate_site::$tableName    . '.' . realestate_site::$tbsite_id, $sites);
         }
 
         $data->select(
             self::$tableName    . '.*'
+//            realestate_site::$tbsite_id
             );
 
         $data->orderBy(self::$tableName . '.' . self::$tbcreated_at, 'desc');
 
         $data = $data->offset($page * (int)$request['offset'])->limit($page)->get();
 
+        dd($data);
         return $data;
     }
 

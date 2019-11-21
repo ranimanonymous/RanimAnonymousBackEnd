@@ -66,5 +66,11 @@ class sizemeasure extends Model
             ]);
     }
 
+    public static function getSizeMeasuresList($size_id){
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $size_id)
+            ->get();
+        return $Data;
+    }
 
 }

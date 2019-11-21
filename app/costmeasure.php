@@ -64,5 +64,11 @@ class costmeasure extends Model
             ]);
     }
 
+    public static function getCostMeasuresList($site_id){
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $site_id)
+            ->get();
+        return $Data;
+    }
 
 }

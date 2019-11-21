@@ -83,10 +83,17 @@ class realestate_site extends Model
         array_push($arr, (int)$site_id);
         $site = site::where('id', $site_id)->first();
 
+        $sites = site::where('inside', $site->id)->get();
+        foreach ($sites as $site){
+            array_push($arr, $site->id);
+        }
+
+
         while($site->level > 2){
             $site = site::where('id', $site->inside)->first();
             array_push($arr, $site->id);
         }
+
         return $arr;
     }
 

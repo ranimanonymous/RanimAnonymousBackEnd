@@ -153,6 +153,13 @@ class notificationlistener extends Model
         return $action;
     }
 
+    public static function getNotificationListenerList($user_id){
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbuser_id, '=', $user_id)
+            ->get();
+        dd($Data);
+        return $Data;
+    }
 
 }
 
