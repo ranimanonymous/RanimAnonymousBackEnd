@@ -1639,31 +1639,6 @@
 									"key": "offset",
 									"value": "1",
 									"type": "text"
-								},
-								{
-									"key": "roomNum",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "size",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "size_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "cost",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "coste_id",
-									"value": "",
-									"type": "text"
 								}
 							]
 						},
@@ -1927,6 +1902,54 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "getCostMeasuresList",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "none",
+											"type": "text"
+										},
+										{
+											"key": "site_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/getCostMeasuresList",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"getCostMeasuresList"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -2083,6 +2106,54 @@
 									"path": [
 										"api",
 										"deleteSizeMeasure"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSizeMeasuresList",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sessionkey",
+											"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+											"type": "text"
+										},
+										{
+											"key": "actionName",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "size_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/getSizeMeasuresList",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"getSizeMeasuresList"
 									]
 								}
 							},
@@ -2427,6 +2498,44 @@
 							"path": [
 								"api",
 								"getNotificationList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotificationListenerList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1901fb6e7b59c20b22fa83ee96b355f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getNotificationListenerList",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getNotificationListenerList"
 							]
 						}
 					},
