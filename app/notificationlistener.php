@@ -23,6 +23,7 @@ class notificationlistener extends Model
     public static $tbcost2 = 'cost2';
     public static $tbroomNum1 = 'roomNum1';
     public static $tbroomNum2 = 'roomNum2';
+    public static $tbdeleted = 'deleted';
     public static $tbcreated_at = 'created_at';
     public static $tbupdated_at = 'updated_at';
 
@@ -34,6 +35,7 @@ class notificationlistener extends Model
             $this->user_id = $request->user_id;
             $this->site_id = $request->site_id;
             $this->m_size = $request->m_size;
+            $this->deleted = $request->deleted;
             if($request->size1 != null){
                 $this->size1 = $request->size1;
             }else{
@@ -74,6 +76,7 @@ class notificationlistener extends Model
             $this->user_id = $request['user_id'];
             $this->site_id = $request['site_id'];
             $this->m_size = $request['m_size'];
+            $this->deleted = $request['deleted'];
             if($request['size1'] != null){
                 $this->size1 = $request['size1'];
             }else{
@@ -126,6 +129,7 @@ class notificationlistener extends Model
         $result[self::$tbcost2] = $data->cost2;
         $result[self::$tbroomNum1] = $data->roomNum1;
         $result[self::$tbroomNum2] = $data->roomNum2;
+        $result[self::$tbdeleted] = $data->deleted;
         $result[self::$tbcreated_at] = $data->created_at;
         $result[self::$tbupdated_at] = $data->updated_at;
 
@@ -156,9 +160,35 @@ class notificationlistener extends Model
     public static function getNotificationListenerList($user_id){
         $Data = DB::table(self::$tableName)
             ->where(self::$tableName . '.' . self::$tbuser_id, '=', $user_id)
+            ->where(self::$tableName . '.' . self::$tbdeleted, '=', 0)
             ->get();
-        dd($Data);
         return $Data;
+    }
+
+    public static function editNotificationListenerList($newObject){
+        DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $newObject->id)
+            ->update([
+                'site_id' => $newObject->site_id,
+                'roomNum1' => $newObject->roomNum1,
+                'roomNum2' => $newObject->roomNum2,
+                'm_cost' => $newObject->m_cost,
+                'cost1' => $newObject->cost1,
+                'cost2' => $newObject->cost2,
+                'm_size' => $newObject->m_size,
+                'size1' => $newObject->size1,
+                'size2' => $newObject->size2,
+                'updated_at' => Carbon::now(),
+            ]);
+    }
+
+    public static function deleteNotificationListenerList($newObject){
+        DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $newObject->id)
+            ->update([
+                'deleted' => 1,
+                'updated_at' => Carbon::now(),
+            ]);
     }
 
 }

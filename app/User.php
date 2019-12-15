@@ -220,4 +220,23 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public static function getUserProfile($user_id){
+        $Data = DB::table(self::$tableName)
+            ->where(self::$tableName . '.' . self::$tbid, '=', $user_id)
+            ->where(self::$tableName . '.' . self::$tbblocked, '=', 0)
+            ->select(
+                self::$tableName . '.' . self::$tbusername,
+                self::$tableName . '.' . self::$tbfirstName,
+                self::$tableName . '.' . self::$tblastName,
+                self::$tableName . '.' . self::$tbemail,
+                self::$tableName . '.' . self::$tbbornDate,
+                self::$tableName . '.' . self::$tbverified,
+                self::$tableName . '.' . self::$tbimage
+            )
+            ->get();
+
+        return $Data[0];
+
+    }
 }

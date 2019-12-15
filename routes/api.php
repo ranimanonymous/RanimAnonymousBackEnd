@@ -32,6 +32,7 @@ Route::post('/sendVerificationCodeRegistering', 'Auth\authController@sendVerific
 Route::post('/sendVerificationCodeResetingPasssword', 'Auth\authController@sendVerificationCodeResetingPasssword')->name('sendVerificationCodeResetingPasssword');
 Route::post('/resetPassword', 'Auth\authController@resetPassword')->name('resetPassword');
 Route::post('/changePassword', 'Auth\authController@changePassword')->name('changePassword');
+Route::post('/getUserProfile', 'Auth\authController@getUserProfile')->name('getUserProfile');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
@@ -178,6 +179,8 @@ Route::post('/addNotificationListener', 'Notification\notificationController@add
 Route::post('/getNumberOfNotification', 'Notification\notificationController@getNumberOfNotification')->name('getNumberOfNotification');
 Route::post('/getNotificationList', 'Notification\notificationController@getNotificationList')->name('getNotificationList');
 Route::post('/getNotificationListenerList', 'Notification\notificationController@getNotificationListenerList')->name('getNotificationListenerList');
+Route::post('/editNotificationListener', 'Notification\notificationController@editNotificationListener')->name('editNotificationListener');
+Route::post('/deleteNotificationListener', 'Notification\notificationController@deleteNotificationListener')->name('deleteNotificationListener');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
@@ -185,4 +188,15 @@ Route::post('/getNotificationListenerList', 'Notification\notificationController
 
 
 
+//------------------------------------------------
+// socialmedia
+//------------------------------------------------
+//------------------------------------------------
+Route::post('/lookupSites', 'Site\siteController@lookupSites')->name('lookupSites');
+Route::post('/soundAll', 'Site\siteController@soundAll')->name('soundAll');
 
+
+
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------

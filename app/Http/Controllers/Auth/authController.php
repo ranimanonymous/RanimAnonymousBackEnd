@@ -243,6 +243,52 @@ class authController extends Controller
 
     }
 
+    public function getUserProfile(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'getUserProfile';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        if ($user != null) {
+
+            User::getUserProfile($request['user_id']);
+
+            // log
+            $MSG = 'success!';
+            $code = 200;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
+        }else{
+
+            // log
+            $MSG = 'userName is not exist!';
+            $code = 400;
+            helper::insertIntoLog(helper::BuildLogObject(
+                $code,
+                $MSG,
+                $request['user_id'],
+                $action,
+                microtime(true) - $startTime,
+                $request
+            ));
+            //-----------------------
+            return json_encode(User::packResponse(null, null, $code, $MSG));
+        }
+    }
+
 
     public function verifyAccount(Request $request){
         // start timer

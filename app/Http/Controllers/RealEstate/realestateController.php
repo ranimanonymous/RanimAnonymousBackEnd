@@ -19,10 +19,16 @@ use App\User;
 use App\helper;
 use App\notification;
 
+use Storage;
+
 class realestateController extends Controller
 {
+
     public function createRealEstate(Request $request){
 
+//        Storage::disk('local')->put('file.txt', 'Contents');
+        Storage::putFile('images', $request->file('img'));
+        dd('heyy');
         // start timer
         $startTime = microtime(true);
         $action = 'createRealEstate';

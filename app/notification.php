@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use DB;
 
 use App\User;
+use App\realestate;
+use App\realestate_site;
+use App\site;
 use App\notificationlistener;
 
 class notification extends Model
@@ -143,8 +146,22 @@ class notification extends Model
 
     public static function getNotificationList($user_id){
         $Data = DB::table(self::$tableName)
+            ->join(realestate::$tableName, realestate::$tableName . '.' . realestate::$tbid, '=', self::$tableName . '.' . self::$tbrealEstate_id)
+            ->join(realestate_site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbrealEstate_id, '=', realestate::$tableName . '.' . realestate::$tbid)
+            ->join(site::$tableName, site::$tableName . '.' . site::$tbid, '=', realestate_site::$tableName . '.' . realestate_site::$tbsite_id)
+            ->join(User::$tableName, User::$tableName . '.' . User::$tbid , '=', realestate::$tableName . '.' . realestate::$tbuser_id)
             ->where(self::$tableName . '.' . self::$tbuser_id, '=', $user_id)
+            ->where(realestate::$tableName . '.' . realestate::$tbavailable, '=', 1)
+            ->where(realestate::$tableName . '.' . realestate::$tbhide, '=', 0)
+            ->where(realestate::$tableName . '.' . realestate::$tbdeleted, '=', 0)
+            ->select(
+                self::$tableName . '.' . self::$tbseen,
+                User::$tableName . '.' . User::$tbusername,
+                site::$tableName . '.' . site::$tbnameEn,
+                realestate::$tableName . '.' . realestate::$tbcreated_at
+                )
             ->get();
+
         return $Data;
     }
 

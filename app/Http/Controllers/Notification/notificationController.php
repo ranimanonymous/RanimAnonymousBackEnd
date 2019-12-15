@@ -128,7 +128,61 @@ class notificationController extends Controller
         return json_encode(notificationlistener::packResponse($notificationList, $code, $MSG));
     }
 
+    public function editNotificationListener(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'editNotificationListener';
+        //-----------------------
 
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $notificationList = notificationlistener::editNotificationListenerList($request);
+
+        // log
+        $MSG = 'Notification Listener has been edited successfuly!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(notificationlistener::packResponse($notificationList, $code, $MSG));
+    }
+
+    public function deleteNotificationListener(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'deleteNotificationListener';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $notificationList = notificationlistener::deleteNotificationListenerList($request);
+
+        // log
+        $MSG = 'Notification Listener has been deleted successfuly!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(notificationlistener::packResponse($notificationList, $code, $MSG));
+    }
 
 }
 

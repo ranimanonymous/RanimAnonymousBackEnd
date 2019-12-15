@@ -8,6 +8,8 @@ use DB;
 use Carbon\Carbon;
 
 use App\realestate_site;
+use App\User;
+use App\site;
 
 class realestate extends Model
 {
@@ -104,6 +106,8 @@ class realestate extends Model
 
         $data = DB::table(self::$tableName);
         $data->join(realestate_site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+        $data->join(site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbsite_id, '=', site::$tableName . '.' . site::$tbid);
+        $data->join(User::$tableName, User::$tableName . '.' . User::$tbid, '=', self::$tableName . '.' . self::$tbuser_id);
         $data->where(self::$tableName . '.' . self::$tbdeleted, '=', 0);
         $data->where(self::$tableName . '.' . self::$tbavailable, '=', 1);
 
@@ -114,15 +118,18 @@ class realestate extends Model
         }
 
         $data->select(
-            self::$tableName    . '.*'
-//            realestate_site::$tbsite_id
+            User::$tableName . '.' . User::$tbusername,
+            self::$tableName . '.' . self::$tbcost,
+            self::$tableName . '.' . self::$tbdescription,
+            self::$tableName . '.' . self::$tbroomNum,
+            self::$tableName . '.' . self::$tbsize,
+            site::$tableName . '.' . site::$tbnameEn . ' as siteName'
             );
 
         $data->orderBy(self::$tableName . '.' . self::$tbcreated_at, 'desc');
 
         $data = $data->offset($page * (int)$request['offset'])->limit($page)->get();
 
-        dd($data);
         return $data;
     }
 
