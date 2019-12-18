@@ -128,9 +128,10 @@ class notification extends Model
         return $arr;
     }
 
-    public static function seenRealEstate($id){
+    public static function seenNotification($user_id){
+
         DB::table(self::$tableName)
-            ->where(self::$tableName    . '.' . self::$tbid, '=', $id)
+            ->where(self::$tableName    . '.' . self::$tbuser_id, '=', $user_id)
             ->update([
                 'seen' => 1,
                 'seen_at' => Carbon::now(),

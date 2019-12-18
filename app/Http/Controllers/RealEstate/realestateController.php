@@ -18,6 +18,8 @@ use App\realestate_site;
 use App\User;
 use App\helper;
 use App\notification;
+use App\indexedrealestate;
+use App\IR;
 
 use Storage;
 
@@ -27,8 +29,8 @@ class realestateController extends Controller
     public function createRealEstate(Request $request){
 
 //        Storage::disk('local')->put('file.txt', 'Contents');
-        Storage::putFile('images', $request->file('img'));
-        dd('heyy');
+//        Storage::putFile('images', $request->file('img'));
+//        dd('heyy');
         // start timer
         $startTime = microtime(true);
         $action = 'createRealEstate';
@@ -102,6 +104,24 @@ class realestateController extends Controller
         $measure_size->save();
 
         //-----------------------
+        // index the realestate
+        // inserting into indexedrealestates table
+
+        $wordList = IR::indexingText($realestate->description);
+
+        foreach ($wordList as $elem){
+
+            $indexedrealestate = new indexedrealestate();
+            $indexedrealestate->setallAttribute([
+                'realEstate_id' => $realestate['id'],
+                'token' => $elem
+            ]);
+            $indexedrealestate->save();
+
+        }
+        //-----------------------
+
+
 
         $notification = new notification();
         $notification->addNotificationForWhomConcern($realestate, $realestate_site, $measure_coste, $measure_size);
@@ -205,34 +225,6 @@ class realestateController extends Controller
         return json_encode(Boolean::packResponse(null, $code, $MSG));
     }
 
-    public function seenRealEstate(Request $request){
-        // start timer
-        $startTime = microtime(true);
-        $action = 'seenRealEstate';
-        //-----------------------
-
-        // get user_id by session
-        $user = User::getUserBySession($request['sessionkey']);
-        $request['user_id'] = $user->id;
-        //-----------------------
-
-        notification::seenRealEstate($request['notification_id']);
-
-        // log
-        $MSG = 'RealEstate has been seen successfuly';
-        $code = 200;
-        helper::insertIntoLog(helper::BuildLogObject(
-            $code,
-            $MSG,
-            $request['user_id'],
-            $action,
-            microtime(true) - $startTime,
-            $request
-        ));
-        //-----------------------
-        return json_encode(Boolean::packResponse(null, $code, $MSG));
-    }
-
     public function getRealEstatesLists(Request $request){
         // start timer
         $startTime = microtime(true);
@@ -283,5 +275,33 @@ class realestateController extends Controller
         ));
         //-----------------------
         return json_encode(Boolean::packResponse(null, $code, $MSG));
+    }
+
+    public function search(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'search';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $data = realestate::search($request['query']);
+
+        // log
+        $MSG = 'Success!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(Boolean::packResponse($data, $code, $MSG));
     }
 }

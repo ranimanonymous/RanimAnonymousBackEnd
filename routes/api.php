@@ -125,7 +125,7 @@ Route::post('/HideRealEstate', 'RealEstate\realestateController@HideRealEstate')
 Route::post('/unHideRealEstate', 'RealEstate\realestateController@unHideRealEstate')->name('unHideRealEstate');//->middleware('checkRole');
 Route::post('/getRealEstatesLists', 'RealEstate\realestateController@getRealEstatesLists')->name('getRealEstatesLists');
 Route::post('/hardDelete', 'RealEstate\realestateController@hardDelete')->name('hardDelete');
-Route::post('/seenRealEstate', 'RealEstate\realestateController@seenRealEstate')->name('seenRealEstate');
+Route::post('/search', 'RealEstate\realestateController@search')->name('search');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
@@ -181,6 +181,7 @@ Route::post('/getNotificationList', 'Notification\notificationController@getNoti
 Route::post('/getNotificationListenerList', 'Notification\notificationController@getNotificationListenerList')->name('getNotificationListenerList');
 Route::post('/editNotificationListener', 'Notification\notificationController@editNotificationListener')->name('editNotificationListener');
 Route::post('/deleteNotificationListener', 'Notification\notificationController@deleteNotificationListener')->name('deleteNotificationListener');
+Route::post('/seenNotification', 'Notification\notificationController@seenNotification')->name('seenNotification');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------

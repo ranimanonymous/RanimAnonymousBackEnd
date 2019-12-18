@@ -35,7 +35,7 @@ class notificationlistener extends Model
             $this->user_id = $request->user_id;
             $this->site_id = $request->site_id;
             $this->m_size = $request->m_size;
-            $this->deleted = $request->deleted;
+            $this->deleted = 0;
             if($request->size1 != null){
                 $this->size1 = $request->size1;
             }else{
@@ -76,7 +76,7 @@ class notificationlistener extends Model
             $this->user_id = $request['user_id'];
             $this->site_id = $request['site_id'];
             $this->m_size = $request['m_size'];
-            $this->deleted = $request['deleted'];
+            $this->deleted = 0;
             if($request['size1'] != null){
                 $this->size1 = $request['size1'];
             }else{
@@ -162,6 +162,7 @@ class notificationlistener extends Model
             ->where(self::$tableName . '.' . self::$tbuser_id, '=', $user_id)
             ->where(self::$tableName . '.' . self::$tbdeleted, '=', 0)
             ->get();
+        dd($Data);
         return $Data;
     }
 

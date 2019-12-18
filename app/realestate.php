@@ -10,6 +10,8 @@ use Carbon\Carbon;
 use App\realestate_site;
 use App\User;
 use App\site;
+use App\IR;
+use App\indexedrealestate;
 
 class realestate extends Model
 {
@@ -160,6 +162,62 @@ class realestate extends Model
             ]);
     }
 
+    public static function search($Query){
+
+        $wordList = IR::indexingText($Query);
+
+        $query = DB::table(indexedrealestate::$tableName);
+
+        $query->join(self::$tableName, self::$tableName . '.' . self::$tbid, '=', indexedrealestate::$tableName . '.' . indexedrealestate::$tbrealEstate_id);
+
+        $query->join(realestate_site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+        $query->join(site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbsite_id, '=', site::$tableName . '.' . site::$tbid);
+        $query->join(User::$tableName, User::$tableName . '.' . User::$tbid, '=', self::$tableName . '.' . self::$tbuser_id);
+
+        $query->where(function($query) {
+            $query->where(self::$tableName . '.' . self::$tbdeleted, '=', 0);
+            $query->where(self::$tableName . '.' . self::$tbavailable, '=', 1);
+        });
+
+        $query->where(function($query) use ($wordList) {
+            foreach ($wordList as $_word) {
+                $query->orWhere(indexedrealestate::$tableName . '.' . indexedrealestate::$tbtoken, 'like', '%' . $_word . '%');
+            }
+        });
+
+        $query->select(
+            User::$tableName . '.' . User::$tbusername,
+            self::$tableName . '.' . self::$tbcost,
+            self::$tableName . '.' . self::$tbdescription,
+            self::$tableName . '.' . self::$tbroomNum,
+            self::$tableName . '.' . self::$tbsize,
+            site::$tableName . '.' . site::$tbnameEn . ' as siteName'
+        );
+
+        $query->orderBy(self::$tableName . '.' . self::$tbcreated_at, 'desc');
+
+        $data = $query->distinct()->get();
+
+        $siteList = site::getSitesList($Query);
+
+        $arr1 = [];
+        foreach ($data as $elem){
+            array_push($arr1, $elem->siteName);
+        }
+
+        $arr2 = [];
+        foreach ($siteList as $elem){
+            array_push($arr2, $elem->nameEn);
+        }
+
+        $weight = IR::weightingWords($arr1, $arr2);
+
+
+        $data = IR::getSortedData($weight, $data, 4);
+
+        return $data;
+
+    }
 
 }
 

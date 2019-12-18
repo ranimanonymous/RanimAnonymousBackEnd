@@ -12,6 +12,7 @@ use App\notificationlistener;
 use App\notification;
 use App\User;
 use App\helper;
+use App\Boolean;
 
 class notificationController extends Controller
 {
@@ -184,6 +185,33 @@ class notificationController extends Controller
         return json_encode(notificationlistener::packResponse($notificationList, $code, $MSG));
     }
 
+    public function seenNotification(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'seenNotification';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        notification::seenNotification($request['user_id']);
+
+        // log
+        $MSG = 'RealEstate has been seen successfuly';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            $code,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(Boolean::packResponse(null, $code, $MSG));
+    }
 }
 
 
