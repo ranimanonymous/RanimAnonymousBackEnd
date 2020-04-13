@@ -40,5 +40,21 @@ class helper extends Model
         $action->save();
     }
 
+    public static function checkDateValidity($date){
+
+        $date = Carbon::parse($date);
+        if($date < Carbon::now()->subYears(80)){
+            // old date
+            return [false, 'old date'];
+        }
+        if($date > Carbon::now()->subYears(6)){
+            // new date
+            return [false, 'new date'];
+        }
+        // valid date
+        return [true, 'success'];
+
+    }
+
 
 }

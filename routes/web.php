@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/email', function () {
+    return view('email.name');
+});
+
+Route::get('/email', 'RealEstate\realestateController@mail');

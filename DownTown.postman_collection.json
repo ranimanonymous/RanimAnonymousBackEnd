@@ -512,6 +512,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getUserProfile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1901fb6e7b59c20b22fa83ee96b355f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getUserProfile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getUserProfile"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1440,7 +1478,7 @@
 								},
 								{
 									"key": "description",
-									"value": "hey",
+									"value": "file You have to pass one argument to destroy method",
 									"type": "text"
 								},
 								{
@@ -1704,7 +1742,7 @@
 					"response": []
 				},
 				{
-					"name": "seenRealEstate",
+					"name": "search",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1722,14 +1760,14 @@
 									"type": "text"
 								},
 								{
-									"key": "notification_id",
-									"value": "1",
+									"key": "query",
+									"value": " to pass one argument",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/seenRealEstate",
+							"raw": "http://127.0.0.1:8000/api/search",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1740,7 +1778,7 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"seenRealEstate"
+								"search"
 							]
 						}
 					},
@@ -2428,6 +2466,147 @@
 					"response": []
 				},
 				{
+					"name": "deleteNotificationListener",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/deleteNotificationListener",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"deleteNotificationListener"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editNotificationListener",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "site_id",
+									"value": "49",
+									"type": "text"
+								},
+								{
+									"key": "roomNum1",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "roomNum2",
+									"value": "13",
+									"type": "text"
+								},
+								{
+									"key": "m_cost",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cost1",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "cost2",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "m_size",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "size1",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "size2",
+									"value": "500",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/editNotificationListener",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"editNotificationListener"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getNumberOfNotification",
 					"request": {
 						"method": "POST",
@@ -2536,6 +2715,140 @@
 							"path": [
 								"api",
 								"getNotificationListenerList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seenRealEstate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1901fb6e7b59c20b22fa83ee96b355f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/seenNotification",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"seenNotification"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sites",
+			"item": [
+				{
+					"name": "lookupSites",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "word",
+									"value": "Maz",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/lookupSites",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lookupSites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "soundAll",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sessionkey",
+									"value": "1ae85075ea0c3f64f883c77a8d0a617c",
+									"type": "text"
+								},
+								{
+									"key": "actionName",
+									"value": "none",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/soundAll",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"soundAll"
 							]
 						}
 					},

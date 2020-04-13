@@ -12,6 +12,9 @@ use App\User;
 use App\site;
 use App\IR;
 use App\indexedrealestate;
+use App\image;
+use App\phones;
+use App\notificationlistener;
 
 class realestate extends Model
 {
@@ -104,35 +107,115 @@ class realestate extends Model
     }
 
     public static function getRealEstatesLists($request){
-        $page = 4;
 
+        $page = 8;
+        DB::enableQueryLog();
+//        DB::enableQueryLog();
         $data = DB::table(self::$tableName);
         $data->join(realestate_site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
         $data->join(site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbsite_id, '=', site::$tableName . '.' . site::$tbid);
         $data->join(User::$tableName, User::$tableName . '.' . User::$tbid, '=', self::$tableName . '.' . self::$tbuser_id);
-        $data->where(self::$tableName . '.' . self::$tbdeleted, '=', 0);
-        $data->where(self::$tableName . '.' . self::$tbavailable, '=', 1);
+        $data->join(image::$tableName, image::$tableName . '.' . image::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+        $data->join(phones::$tableName, phones::$tableName . '.' . phones::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
 
-        $sites = realestate_site::getSiteDerivation($request['site_id']);
 
-        if($request['site_id'] != null){
-            $data->whereIn(realestate_site::$tableName    . '.' . realestate_site::$tbsite_id, $sites);
+        if(isset($request['lisenter_id'])){
+            $listener = notificationlistener::where('id', $request['lisenter_id'])->first();
+
+            $request['site_id'] = $listener->site_id;
+            $request['room1'] = $listener->roomNum1;
+            $request['room2'] = $listener->roomNum2;
+            $request['size1'] = $listener->size1;
+            $request['size2'] = $listener->size2;
+            $request['cost1'] = $listener->cost1;
+            $request['cost2'] = $listener->cost2;
+            $request['date'] = $listener->created_at;
+
         }
 
+
+        $data->where(function($query) use ($request) {
+            $query->where(self::$tableName . '.' . self::$tbdeleted, '=', 0);
+            $query->where(self::$tableName . '.' . self::$tbavailable, '=', 1);
+            $sites = realestate_site::getSiteDerivation($request['site_id']);
+
+            if($request['site_id'] != null){
+                $query->whereIn(realestate_site::$tableName    . '.' . realestate_site::$tbsite_id, $sites);
+            }
+        });
+
+//var_dump($request['room1']);exit();
+
+
+
+        $data->where(function($query) use ($request) {
+            if($request['room1'] != null){
+                $query->where(self::$tableName . '.' . self::$tbroomNum, '>=', $request['room1']);
+            }
+            if($request['room2'] != null){
+                $query->where(self::$tableName . '.' . self::$tbroomNum, '<=', $request['room2']);
+            }
+            if($request['size1'] != null){
+                $query->where(self::$tableName . '.' . self::$tbsize, '>=', $request['size1']);
+            }
+            if($request['size2'] != null){
+                $query->where(self::$tableName . '.' . self::$tbsize, '<=', $request['size2']);
+            }
+            if($request['cost1'] != null){
+                $query->where(self::$tableName . '.' . self::$tbcost, '>=', $request['cost1']);
+            }
+            if($request['cost2'] != null){
+                $query->where(self::$tableName . '.' . self::$tbcost, '<=', $request['cost2']);
+            }
+            if(isset($request['lisenter_id'])){
+                $query->where(self::$tableName . '.' . self::$tbupdated_at, '>=', $request['date']);
+            }
+        });
+
+
+
         $data->select(
+            self::$tableName . '.' . self::$tbid,
             User::$tableName . '.' . User::$tbusername,
             self::$tableName . '.' . self::$tbcost,
             self::$tableName . '.' . self::$tbdescription,
             self::$tableName . '.' . self::$tbroomNum,
             self::$tableName . '.' . self::$tbsize,
-            site::$tableName . '.' . site::$tbnameEn . ' as siteName'
+            self::$tableName . '.' . self::$tbcreated_at,
+            phones::$tableName . '.' . phones::$tbGSM,
+            site::$tableName . '.' . site::$tbnameEn . ' as siteName',
+            image::$tableName . '.' . image::$tbname . ' as ImageName'
             );
 
-        $data->orderBy(self::$tableName . '.' . self::$tbcreated_at, 'desc');
+        $data->orderBy(self::$tableName . '.' . self::$tbid, 'desc');
+        $data = $data->take($page)->skip($page * (int)$request['offset'])->get();
 
-        $data = $data->offset($page * (int)$request['offset'])->limit($page)->get();
+        $returnedData = [];
+        $helper = [];
 
-        return $data;
+//        dd($data);
+        $counter = 0;
+        for ($i = 0; $i < sizeof($data) ; $i++){
+            $entered = false;
+            foreach ($helper as $elem){
+                if($data[$i]->id == $elem['id']){
+                    array_push($returnedData[$elem['index']]->GSM, $data[$i]->GSM);
+                    $entered = true;
+                }
+            }
+
+            if(!in_array($data[$i], $returnedData) && !$entered) {
+                $temp = $data[$i]->GSM;
+                $data[$i]->GSM = [];
+                array_push($data[$i]->GSM, $temp);
+                array_push($returnedData, $data[$i]);
+                array_push($helper, ['id' => $data[$i]->id, 'index' => $counter]);
+                $counter++;
+            }
+        }
+//        dd(DB::getQueryLog());
+//        dd($returnedData);
+        return $returnedData;
     }
 
     public static function deleteRealEstate($id){
@@ -217,6 +300,53 @@ class realestate extends Model
 
         return $data;
 
+    }
+
+    public static function getRealEstateById($realEstate_id){
+
+        DB::enableQueryLog();
+        $data = DB::table(self::$tableName);
+        $data->join(realestate_site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+        $data->join(site::$tableName, realestate_site::$tableName . '.' . realestate_site::$tbsite_id, '=', site::$tableName . '.' . site::$tbid);
+        $data->join(User::$tableName, User::$tableName . '.' . User::$tbid, '=', self::$tableName . '.' . self::$tbuser_id);
+        $data->join(image::$tableName, image::$tableName . '.' . image::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+        $data->join(phones::$tableName, phones::$tableName . '.' . phones::$tbrealEstate_id, '=', self::$tableName . '.' . self::$tbid);
+
+        $data->where(self::$tableName . '.' . self::$tbdeleted, '=', 0);
+        $data->where(self::$tableName . '.' . self::$tbavailable, '=', 1);
+        $data->where(self::$tableName . '.' . self::$tbid, '=', $realEstate_id);
+
+
+        $data->select(
+            self::$tableName . '.' . self::$tbid,
+            User::$tableName . '.' . User::$tbusername,
+            self::$tableName . '.' . self::$tbcost,
+            self::$tableName . '.' . self::$tbdescription,
+            self::$tableName . '.' . self::$tbroomNum,
+            self::$tableName . '.' . self::$tbsize,
+            self::$tableName . '.' . self::$tbcreated_at,
+            phones::$tableName . '.' . phones::$tbGSM,
+            site::$tableName . '.' . site::$tbnameEn . ' as siteName',
+            image::$tableName . '.' . image::$tbname . ' as ImageName'
+        );
+
+        $data = $data->get();
+
+        if($data != null) {
+
+            $temp = $data[0]->GSM;
+            $data[0]->GSM = [];
+            array_push($data[0]->GSM, $temp);
+
+            if (sizeof($data) > 0) {
+                for ($i = 1; $i < sizeof($data); $i++) {
+                    array_push($data[0]->GSM, $data[$i]->GSM);
+                }
+            }
+            return $data[0];
+        }else{
+            return null;
+        }
     }
 
 }

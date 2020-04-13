@@ -79,22 +79,35 @@ class realestate_site extends Model
 
     public static function getSiteDerivation($site_id){
 
-        $arr = [];
-        array_push($arr, (int)$site_id);
+        $fathers = [];
         $site = site::where('id', $site_id)->first();
-
-        $sites = site::where('inside', $site->id)->get();
-        foreach ($sites as $site){
-            array_push($arr, $site->id);
-        }
+        array_push($fathers, $site->id);
 
 
         while($site->level > 2){
             $site = site::where('id', $site->inside)->first();
-            array_push($arr, $site->id);
+            if(!in_array($site->id, $fathers)) {
+                array_push($fathers, $site->id);
+            }
         }
 
-        return $arr;
+        $new = $fathers;
+        while (sizeof($new) > 0){
+
+            $sites = site::where('inside', $new[0])->get();
+            array_splice($new, 0, 1);
+            foreach ($sites as $son){
+                if(!in_array($son->id, $fathers)) {
+                    array_push($fathers, $son->id);
+                }
+                if(!in_array($son->id, $new)) {
+                    array_push($new, $son->id);
+                }
+            }
+
+        }
+
+        return $fathers;
     }
 
 

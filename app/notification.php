@@ -82,20 +82,24 @@ class notification extends Model
 
         $sites = realestate_site::getSiteDerivation($realestate_site->site_id);
 
+        DB::enableQueryLog();
+
         $Query = DB::table(notificationlistener::$tableName);
 
         // get the realestate that other user add it, dont give me notification on my realestate
         $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbuser_id, '!=', $realestate->user_id);
 
 
-        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbcost1, '<=', $realestate->cost);
-        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbcost2, '>=', $realestate->cost);
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbcost1, '<=', (int)$realestate->cost);
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbcost2, '>=', (int)$realestate->cost);
 
-        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbsize1, '<=', $realestate->size);
-        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbsize2, '>=', $realestate->size);
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbsize1, '<=', (int)$realestate->size);
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbsize2, '>=', (int)$realestate->size);
 
-        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbroomNum1, '<=', $realestate->roomNum);
-        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbroomNum2, '>=', $realestate->roomNum);
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbroomNum1, '<=', (int)$realestate->roomNum);
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbroomNum2, '>=', (int)$realestate->roomNum);
+
+        $Query->where(notificationlistener::$tableName    . '.' . notificationlistener::$tbdeleted, '=', 0);
 
         //  listener    realestate
         //  siteA       siteA or other derivation on higher level
@@ -103,11 +107,13 @@ class notification extends Model
 
         $Query->select(
             notificationlistener::$tableName    . '.' . notificationlistener::$tbuser_id
-        )->distinct();
+        );
 
         $Query->orderBy(notificationlistener::$tableName    . '.' . notificationlistener::$tbcreated_at, 'desc');
 
         $data = $Query->get();
+
+//        dd(DB::getQueryLog());
 
         $arr = $this->prepareArr($data, $realestate->id);
 
@@ -121,9 +127,13 @@ class notification extends Model
 
     public function prepareArr($userCollection, $realestate_id){
 
+        $indexArr = [];
         $arr = [];
         foreach ($userCollection as $item){
-            array_push($arr, ['user_id' => $item->user_id, 'realEstate_id' => $realestate_id]);
+            if(!in_array($item->user_id, $indexArr)){
+                array_push($indexArr, $item->user_id);
+                array_push($arr, ['user_id' => $item->user_id, 'realEstate_id' => $realestate_id]);
+            }
         }
         return $arr;
     }
@@ -159,6 +169,7 @@ class notification extends Model
                 self::$tableName . '.' . self::$tbseen,
                 User::$tableName . '.' . User::$tbusername,
                 site::$tableName . '.' . site::$tbnameEn,
+                realestate::$tableName . '.' . realestate::$tbid . ' as realestate_id',
                 realestate::$tableName . '.' . realestate::$tbcreated_at
                 )
             ->get();
@@ -170,3 +181,4 @@ class notification extends Model
 }
 
 ?>
+

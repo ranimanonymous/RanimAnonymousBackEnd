@@ -75,13 +75,56 @@ class realestateController extends Controller
         //-----------------------
 
         // insert images relate to realestate
-        $ImageLists = image::getImageLists($request);
-        foreach($ImageLists as $img){
-            $image = new image();
-            $request['name'] = $img;
-            $image->setallAttribute($request);
-            $image->save();
+//        $ImageLists = image::getImageLists($request);
+//        foreach($ImageLists as $img){
+//            $image = new image();
+//            $request['name'] = $imageName;
+//            $image->setallAttribute($request);
+//            $image->save();
+//        }
+
+
+
+
+//        $imageName = md5(uniqid(rand(), true));
+//        $image = new image();
+//        $request['name'] = $imageName;
+//        $image->setallAttribute($request);
+//        $image->save();
+
+
+
+
+        // code 5ra
+
+        $image = $request->file('img');
+//        $path = '/images/'.time() .$image->getClientOriginalName() ;
+//        \Storage::disk('public')->put($path , file_get_contents($image));
+
+
+        // $path = str_replace('app\Services', '\public\uploads', dirname(_FILE_));
+        $path = str_replace('app/Http/Controllers/RealEstate', '/public_html/images', dirname(__FILE__));
+        if (!empty($image) && $image->isValid()) {
+            if ($image->isValid()) {
+
+                $imageName = md5(uniqid(rand(), true)) . '.jpg';
+
+                $image->move($path, $imageName);
+                $path = '/images/' . $imageName;
+
+
+                $image = new image();
+                $request['name'] = $imageName;
+                $image->setallAttribute($request);
+                $image->save();
+            }
         }
+
+
+        // nhayet al 5ra 
+        
+//        Storage::putFileAs('images', $request->file('img'), $imageName . '.jpg');
+//        Storage::disk('local')->put('images', file_get_contents('img'));
         //-----------------------
 
         // insert realestate_site relate to realestate
@@ -231,6 +274,13 @@ class realestateController extends Controller
         $action = 'getRealEstatesLists';
         //-----------------------
 
+        // get user_id by session
+        if(isset($request['sessionkey'])) {
+            $user = User::getUserBySession($request['sessionkey']);
+            $request['user_id'] = $user->id;
+        }
+        //-----------------------
+
         $realestate = realestate::getRealEstatesLists($request);
 
         // log
@@ -304,4 +354,39 @@ class realestateController extends Controller
         //-----------------------
         return json_encode(Boolean::packResponse($data, $code, $MSG));
     }
+
+    public function getRealEstateById(Request $request){
+        // start timer
+        $startTime = microtime(true);
+        $action = 'getRealEstateById';
+        //-----------------------
+
+        // get user_id by session
+        $user = User::getUserBySession($request['sessionkey']);
+        $request['user_id'] = $user->id;
+        //-----------------------
+
+        $data = realestate::getRealEstateById($request['realEstate_id']);
+
+        // log
+        $MSG = 'Success!';
+        $code = 200;
+        helper::insertIntoLog(helper::BuildLogObject(
+            200,
+            $MSG,
+            $request['user_id'],
+            $action,
+            microtime(true) - $startTime,
+            $request
+        ));
+        //-----------------------
+        return json_encode(Boolean::packResponse($data, $code, $MSG));
+    }
+
+    public function mail(){
+
+        return view('email.name', ['name' => 'James']);
+    }
+
+
 }

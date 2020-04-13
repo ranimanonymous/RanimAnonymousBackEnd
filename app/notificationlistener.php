@@ -162,7 +162,6 @@ class notificationlistener extends Model
             ->where(self::$tableName . '.' . self::$tbuser_id, '=', $user_id)
             ->where(self::$tableName . '.' . self::$tbdeleted, '=', 0)
             ->get();
-        dd($Data);
         return $Data;
     }
 

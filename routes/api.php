@@ -19,20 +19,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 //-------------------------------------------
-//  authController
+//  Auth Module
 //-------------------------------------------
 //-------------------------------------------
-Route::post('/login', 'Auth\authController@login')->name('login');
-Route::post('/logout', 'Auth\authController@logout')->name('logout')->middleware('checkRole');
-Route::post('/register', 'Auth\authController@register')->name('register');
-Route::post('/editUser', 'Auth\authController@editUser')->name('editUser');
-Route::post('/verifyaccount', 'Auth\authController@verifyAccount')->name('verifyaccount');
-Route::post('/verifyRestingPassword', 'Auth\authController@verifyRestingPassword')->name('verifyRestingPassword');
-Route::post('/sendVerificationCodeRegistering', 'Auth\authController@sendVerificationCodeRegistering')->name('sendVerificationCodeRegistering');
-Route::post('/sendVerificationCodeResetingPasssword', 'Auth\authController@sendVerificationCodeResetingPasssword')->name('sendVerificationCodeResetingPasssword');
-Route::post('/resetPassword', 'Auth\authController@resetPassword')->name('resetPassword');
-Route::post('/changePassword', 'Auth\authController@changePassword')->name('changePassword');
-Route::post('/getUserProfile', 'Auth\authController@getUserProfile')->name('getUserProfile');
+Route::post('/login',           'Auth\Controllers\loginController@login'        )->name('login');
+Route::post('/logout',          'Auth\Controllers\logoutController@logout'      )->name('logout')->middleware('checkRole');
+Route::post('/register',        'Auth\Controllers\registerController@register'  )->name('register');
+Route::post('/editUser',        'Auth\Controllers\editUserController@editUser'  )->name('editUser');
+
+Route::post('/resetPassword',   'Auth\Controllers\resetPasswordController@resetPassword'    )->name('resetPassword');
+Route::post('/changePassword',  'Auth\Controllers\changePasswordController@changePassword'  )->name('changePassword');
+Route::post('/getUserProfile',  'Auth\Controllers\getUserProfileController@getUserProfile'  )->name('getUserProfile');
+
+Route::post('/verifyaccount',                           'Auth\Controllers\verifyAccountController@verifyAccount'                                                    )->name('verifyaccount');
+Route::post('/verifyRestingPassword',                   'Auth\Controllers\verifyRestingPasswordController@verifyRestingPassword'                                    )->name('verifyRestingPassword');
+Route::post('/sendVerificationCodeRegistering',         'Auth\Controllers\sendVerificationCodeRegisteringController@sendVerificationCodeRegistering'                )->name('sendVerificationCodeRegistering');
+Route::post('/sendVerificationCodeResetingPasssword',   'Auth\Controllers\sendVerificationCodeResetingPassswordController@sendVerificationCodeResetingPasssword'    )->name('sendVerificationCodeResetingPasssword');
+
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
@@ -126,6 +129,7 @@ Route::post('/unHideRealEstate', 'RealEstate\realestateController@unHideRealEsta
 Route::post('/getRealEstatesLists', 'RealEstate\realestateController@getRealEstatesLists')->name('getRealEstatesLists');
 Route::post('/hardDelete', 'RealEstate\realestateController@hardDelete')->name('hardDelete');
 Route::post('/search', 'RealEstate\realestateController@search')->name('search');
+Route::post('/getRealEstateById', 'RealEstate\realestateController@getRealEstateById')->name('getRealEstateById');
 //-------------------------------------------
 //-------------------------------------------
 //-------------------------------------------
