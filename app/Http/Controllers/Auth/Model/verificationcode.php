@@ -248,8 +248,9 @@ class verificationcode extends Model
             $verificationcode->setallAttribute($data);
             $verificationcode->save();
 
-            SendMailable::sendEmail($user->email, $user->firstName . ' ' . $user->lastName, $data['verificationcode']);
-
+            if(!config::$verify_without_email) {
+                SendMailable::sendEmail($user->email, $user->firstName . ' ' . $user->lastName, $data['verificationcode']);
+            }
 
             return true;
         } catch (Exception $e) {

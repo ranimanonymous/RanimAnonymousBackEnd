@@ -2,116 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b23c6e48-bbc9-475d-afe1-b48a9f47b783" name="Default Changelist" comment="first stable push">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/changePasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/SendMailable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/paramvalidation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/.styleci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Console/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Exceptions/Handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/app/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/artisan" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/bootstrap/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/bootstrap/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/broadcasting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/cache.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/filesystems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/hashing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/logging.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/queue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/services.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/config/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/database/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/database/factories/UserFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/public/web.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/lang/en/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/lang/en/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/lang/en/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/lang/en/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/resources/views/welcome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/routes/channels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/routes/console.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/app/public/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/framework/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/framework/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/framework/testing/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/framework/views/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/storage/logs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/tests/CreatesApplication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/tests/TestCase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emailsend/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/email/name.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DownTown.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/DownTown.postman_collection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/authController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RealEstate/realestateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RealEstate/realestateController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/notification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/notificationlistener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/notificationlistener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/realestate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/realestate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/realestate_site.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/realestate_site.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/verificationcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downtown.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hey.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,27 +106,27 @@
           <entry key="env" value="1" />
           <entry key="jpeg" value="2" />
           <entry key="jpg" value="1" />
-          <entry key="php" value="143" />
+          <entry key="php" value="149" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="1" />
+          <entry key="Blade" value="2" />
           <entry key="Image" value="3" />
-          <entry key="PHP" value="142" />
+          <entry key="PHP" value="147" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="104" />
-          <entry key="php" value="8139" />
+          <entry key="php" value="8293" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="332" />
-          <entry key="PHP" value="7807" />
+          <entry key="Blade" value="395" />
+          <entry key="PHP" value="7898" />
           <entry key="PLAIN_TEXT" value="104" />
         </counts>
       </usages-collector>
@@ -240,31 +134,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/loginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+            <state relative-caret-position="235">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
-                <element signature="e#648#1201#0#PHP" />
-                <element signature="e#1207#1538#0#PHP" />
-                <element signature="e#2849#3232#0#PHP" />
-                <element signature="e#1637#3386#0#PHP" />
-                <element signature="e#5899#6515#0#PHP" />
-                <element signature="e#3866#4388#0#PHP" />
-                <element signature="e#5016#6980#0#PHP" />
+                <element signature="e#57#93#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/SendMailable.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-128">
-              <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+            <state relative-caret-position="552">
+              <caret line="254" column="24" lean-forward="true" selection-start-line="254" selection-start-column="24" selection-end-line="254" selection-end-column="24" />
               <folding>
-                <element signature="e#52#81#0#PHP" expanded="true" />
+                <element signature="e#51#90#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -273,70 +161,46 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="30" />
+            <state relative-caret-position="200">
+              <caret line="12" column="39" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/SendMailable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="35" column="43" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="43" />
+              <folding>
+                <element signature="e#52#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/email/name.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="144" column="95" selection-start-line="144" selection-start-column="95" selection-end-line="144" selection-end-column="95" />
+            <state relative-caret-position="313">
+              <caret line="143" column="69" lean-forward="true" selection-start-line="143" selection-start-column="69" selection-end-line="143" selection-end-column="69" />
               <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#td#0;n#tr#3;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/message.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/loginController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/mail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-808">
-              <caret line="58" column="60" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+            <state relative-caret-position="80">
+              <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+              <folding>
+                <element signature="e#53#92#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -422,7 +286,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/changePasswordController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/editUserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/getUserProfileController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/loginController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/logoutController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/verifyAccountController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/registerController.php" />
@@ -433,12 +296,13 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/Session.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/User.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/emailController.php" />
         <option value="$PROJECT_DIR$/config/mail.php" />
-        <option value="$PROJECT_DIR$/resources/views/email/name.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/SendMailable.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/loginController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php" />
+        <option value="$PROJECT_DIR$/resources/views/email/name.blade.php" />
       </list>
     </option>
   </component>
@@ -633,15 +497,6 @@
               <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Auth" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Auth" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Helper" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -652,31 +507,6 @@
               <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Auth" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Http" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Controllers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Auth" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ParameterValidation" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="images" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -696,11 +526,6 @@
               <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="email" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
-            <path>
-              <item name="BackEnd" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="routes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -710,7 +535,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="images&#9;FILE&#9;file://D:/Projects/DownTown/BackEnd/storage/app/images&#10;file.txt&#9;FILE&#9;file://D:/Projects/DownTown/BackEnd/storage/app/file.txt&#10;AppServiceProvider&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs/DownTown_adminPanel" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -792,7 +617,7 @@
       <workItem from="1584633631170" duration="89000" />
       <workItem from="1585936664298" duration="97000" />
       <workItem from="1586112407311" duration="1131000" />
-      <workItem from="1586182271649" duration="57152000" />
+      <workItem from="1586182271649" duration="64661000" />
     </task>
     <task id="LOCAL-00001" summary="authentication api is ready and working correctly">
       <created>1569678524603</created>
@@ -1064,7 +889,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="426678000" />
+    <option name="totallyTimeSpent" value="434187000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1354,16 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding>
-            <element signature="e#53#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/changePasswordController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -1474,27 +1289,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/loginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1528,52 +1322,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/email/name.blade.php">
+    <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="144" column="95" selection-start-line="144" selection-start-column="95" selection-end-line="144" selection-end-column="95" />
+        <state relative-caret-position="408">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/message.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
           <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#0;n#tr#3;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#53#92#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/SendMailable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        <state relative-caret-position="435">
+          <caret line="35" column="43" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="43" />
           <folding>
             <element signature="e#52#81#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Controllers/loginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#57#93#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Helper/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/Model/verificationcode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        <state relative-caret-position="552">
+          <caret line="254" column="24" lean-forward="true" selection-start-line="254" selection-start-column="24" selection-end-line="254" selection-end-column="24" />
           <folding>
-            <element signature="e#648#1201#0#PHP" />
-            <element signature="e#1207#1538#0#PHP" />
-            <element signature="e#2849#3232#0#PHP" />
-            <element signature="e#1637#3386#0#PHP" />
-            <element signature="e#5899#6515#0#PHP" />
-            <element signature="e#3866#4388#0#PHP" />
-            <element signature="e#5016#6980#0#PHP" />
+            <element signature="e#51#90#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/email/name.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="143" column="69" lean-forward="true" selection-start-line="143" selection-start-column="69" selection-end-line="143" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -10,7 +10,7 @@ use DB;
 class config extends Model
 {
 
-    public static $verify_without_email = true;
+    public static $verify_without_email = false;
 
     public static $verification_type_of_verifingAccount = 1;
     public static $verification_type_of_resetingPassword = 2;
